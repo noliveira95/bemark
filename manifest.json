@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "Bemark",
+  "version": "1.0",
+  "description": "Bookmark manager extension",
+  "action": { "default_popup": "index.html" },
+  "permissions": ["bookmarks"]
+}

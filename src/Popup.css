@@ -1,0 +1,37 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+p {
+  font-size: 2rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  text-align: start;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+  max-height: 50%;
+  scrollbar-width: none;
+}
+
+.popup::-webkit-scrollbar {
+  display: none;
+}
+
+.sublist-item {
+  list-style-type: disc;
+}
