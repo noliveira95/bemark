@@ -47,3 +47,7 @@ li {
 .folder {
   cursor: pointer;
 }
+
+.folder-button {
+  height: 40px;
+}
