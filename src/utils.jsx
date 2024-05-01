@@ -4,20 +4,20 @@ import Folder from './components/Folder';
 export function getAllItems(nodes) {
   return nodes.map((node) => {
     if (node.url) {
-      return getBookmark(node);
+      return <Bookmark key={node.id} url={node.url} title={node.title} />;
     } else {
-      return getFolder(node);
+      return <Folder key={node.id} title={node.title} items={node.children} />;
     }
   });
 }
 
-export function getBookmark(node) {
-  return <Bookmark url={node.url} title={node.title} />;
-}
+// export function getBookmark(node) {
+//   return <Bookmark url={node.url} title={node.title} id={node.id} />;
+// }
 
-export function getFolder(node) {
-  return <Folder title={node.title} items={node.children} />;
-}
+// export function getFolder(node) {
+//   return <Folder title={node.title} items={node.children} id={node.id} />;
+// }
 
 // Add a bookmark for www.google.com
 // export function addBookmark() {
