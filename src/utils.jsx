@@ -11,13 +11,23 @@ export function getAllItems(nodes) {
   });
 }
 
-// export function getBookmark(node) {
-//   return <Bookmark url={node.url} title={node.title} id={node.id} />;
-// }
+export function getBookmarks(nodes) {
+  return nodes.map((node) => {
+    if (node.url) {
+      return <Bookmark key={node.id} url={node.url} title={node.title} />;
+    }
+    return;
+  });
+}
 
-// export function getFolder(node) {
-//   return <Folder title={node.title} items={node.children} id={node.id} />;
-// }
+export function getFolders(nodes) {
+  return nodes.map((node) => {
+    if (node.url) {
+      return;
+    }
+    return <Folder key={node.id} title={node.title} items={node.children} />;
+  });
+}
 
 // Add a bookmark for www.google.com
 // export function addBookmark() {
