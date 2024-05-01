@@ -1,4 +1,5 @@
 import Bookmark from './components/Bookmark';
+import Folder from './components/Folder';
 
 export function getAllItems(nodes) {
   return nodes.map((node) => {
@@ -15,12 +16,7 @@ export function getBookmark(node) {
 }
 
 export function getFolder(node) {
-  return (
-    <li className="folder">
-      {node.title}
-      <ul>{getAllItems(node.children)}</ul>
-    </li>
-  );
+  return <Folder title={node.title} items={node.children} />;
 }
 
 // Add a bookmark for www.google.com
