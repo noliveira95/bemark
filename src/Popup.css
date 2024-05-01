@@ -50,4 +50,6 @@ li {
 
 .folder-button {
   height: 40px;
+  background-color: transparent;
+  border: none;
 }
