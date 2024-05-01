@@ -1,8 +1,7 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  overflow-y: scroll;
+  width: 375px;
+  height: 600px;
 }
 
 p {
@@ -33,15 +32,24 @@ li {
 .popup {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  overflow-y: scroll;
-  max-height: 50%;
-  scrollbar-width: none;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .popup::-webkit-scrollbar {
   display: none;
+}
+
+.bookmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 
 .folder {
@@ -53,7 +61,6 @@ li {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  height: 40px;
-  background-color: transparent;
-  border: none;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
