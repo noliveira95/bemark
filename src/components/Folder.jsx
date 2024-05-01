@@ -7,12 +7,10 @@ function Folder({ title, items }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <li className="folder">
-      <div>
-        <button className="folder-button" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <IoFolderOpen /> : <IoFolder />}
-          {title}
-        </button>
-      </div>
+      <button className="folder-button" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <IoFolderOpen /> : <IoFolder />}
+        {title}
+      </button>
       <ul className={`folder-items ${isOpen ? 'visible' : 'hidden'}`}>
         {getAllItems(items)}
       </ul>
