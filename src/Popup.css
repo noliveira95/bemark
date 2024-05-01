@@ -28,6 +28,8 @@ li {
   display: none;
 }
 
+/* End utility classes */
+
 .popup {
   display: flex;
   flex-direction: column;
