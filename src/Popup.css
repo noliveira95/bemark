@@ -49,6 +49,10 @@ li {
 }
 
 .folder-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   height: 40px;
   background-color: transparent;
   border: none;
