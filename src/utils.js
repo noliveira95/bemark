@@ -1,42 +1,15 @@
-// Add a bookmark for www.google.com
-export function addBookmark() {
-  chrome.bookmarks.create(
-    {
-      parentId: '1',
-      title: 'Google',
-      url: 'https://www.google.com',
-    },
-    () => {
-      console.log('Bookmark added');
-      location.reload(); // Refresh the popup
-    }
-  );
-}
-
-// Remove the bookmark for www.google.com
-export function removeBookmark() {
-  chrome.bookmarks.search({ url: 'https://www.google.com/' }, (results) => {
-    for (const result of results) {
-      if (result.url === 'https://www.google.com/') {
-        chrome.bookmarks.remove(result.id, () => {});
-      }
-    }
-    location.reload();
-  });
-}
-
 // Recursively display the bookmarks
-export function displayBookmarks(nodes, parentNode) {
+export function getAllItems(nodes, parentNode) {
   for (const node of nodes) {
     if (node.url) {
-      displayBookmark(node, parentNode);
+      getBookmark(node, parentNode);
     } else {
-      displayFolder(node, parentNode);
+      getFolder(node, parentNode);
     }
   }
 }
 
-export function displayBookmark(node, parentNode) {
+export function getBookmark(node, parentNode) {
   const listItem = document.createElement('li');
   const link = document.createElement('a');
   link.href = node.url;
@@ -47,7 +20,7 @@ export function displayBookmark(node, parentNode) {
   parentNode.appendChild(listItem);
 }
 
-export function displayFolder(node, parentNode) {
+export function getFolder(node, parentNode) {
   const listItem = document.createElement('li');
   listItem.textContent = node.title;
   listItem.setAttribute('class', 'folder');
@@ -56,6 +29,33 @@ export function displayFolder(node, parentNode) {
   if (node.children) {
     const sublist = document.createElement('ul');
     parentNode.appendChild(sublist);
-    displayBookmarks(node.children, sublist);
+    getAllItems(node.children, sublist);
   }
 }
+
+// Add a bookmark for www.google.com
+// export function addBookmark() {
+//   chrome.bookmarks.create(
+//     {
+//       parentId: '1',
+//       title: 'Google',
+//       url: 'https://www.google.com',
+//     },
+//     () => {
+//       console.log('Bookmark added');
+//       location.reload(); // Refresh the popup
+//     }
+//   );
+// }
+
+// Remove the bookmark for www.google.com
+// export function removeBookmark() {
+//   chrome.bookmarks.search({ url: 'https://www.google.com/' }, (results) => {
+//     for (const result of results) {
+//       if (result.url === 'https://www.google.com/') {
+//         chrome.bookmarks.remove(result.id, () => {});
+//       }
+//     }
+//     location.reload();
+//   });
+// }
