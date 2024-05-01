@@ -1,3 +1,5 @@
+import Bookmark from './components/Bookmark';
+
 export function getAllItems(nodes) {
   return nodes.map((node) => {
     if (node.url) {
@@ -9,13 +11,7 @@ export function getAllItems(nodes) {
 }
 
 export function getBookmark(node) {
-  return (
-    <li className="bookmark">
-      <a href={node.url} target="_blank" rel="noreferrer">
-        {node.title}
-      </a>
-    </li>
-  );
+  return <Bookmark url={node.url} title={node.title} />;
 }
 
 export function getFolder(node) {
