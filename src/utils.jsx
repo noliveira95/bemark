@@ -29,6 +29,22 @@ export function getFolders(nodes) {
   });
 }
 
+export function getFavorites(nodes) {
+  return nodes.map((node) => {
+    if (node.title === 'Bookmarks') {
+      if (node.url) {
+        return <Bookmark key={node.id} url={node.url} title={node.title} />;
+      } else {
+        return (
+          <Folder key={node.id} title={node.title} items={node.children} />
+        );
+      }
+    } else {
+      return;
+    }
+  });
+}
+
 // Add a bookmark for www.google.com
 // export function addBookmark() {
 //   chrome.bookmarks.create(
