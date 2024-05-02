@@ -52,8 +52,21 @@ li {
   margin: 0.5rem;
 }
 
-.bookmark-icon {
-  font-size: 16px;
+.bookmark-icon,
+.folder-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  min-width: 1.5rem;
+}
+
+.bookmark-title,
+.folder-title {
+  font-size: 1rem;
+  text-decoration: none;
+  color: black;
+  max-width: 30ch;
 }
 
 .folder {
@@ -67,4 +80,8 @@ li {
   gap: 0.5rem;
   padding: 0.5rem;
   margin: 0.5rem;
+}
+
+.folder-title {
+  display: inline;
 }

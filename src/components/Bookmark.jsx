@@ -5,7 +5,7 @@ function Bookmark({ url, title }) {
   return (
     <li className="bookmark">
       <IoDocumentOutline className="bookmark-icon" />
-      <a href={url} target="_blank" rel="noreferrer">
+      <a className="bookmark-title" href={url} target="_blank" rel="noreferrer">
         {title}
       </a>
     </li>

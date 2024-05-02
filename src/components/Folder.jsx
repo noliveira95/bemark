@@ -8,8 +8,10 @@ function Folder({ title, items }) {
   return (
     <li className="folder">
       <button className="folder-button" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <IoFolderOpen /> : <IoFolder />}
-        {title}
+        <div className="folder-icon">
+          {isOpen ? <IoFolderOpen /> : <IoFolder />}
+        </div>
+        <p className="folder-title">{title}</p>
       </button>
       <ul className={`folder-items ${isOpen ? 'visible' : 'hidden'}`}>
         {getAllItems(items)}
