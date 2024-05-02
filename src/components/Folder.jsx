@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { getAllItems } from '../utils';
 import PropTypes from 'prop-types';
-import { IoFolder, IoFolderOpen } from 'react-icons/io5';
+import { BsFolderFill } from 'react-icons/bs';
 
 function Folder({ title, items }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +9,7 @@ function Folder({ title, items }) {
     <li className="folder">
       <button className="folder-button" onClick={() => setIsOpen(!isOpen)}>
         <div className="folder-icon">
-          {isOpen ? <IoFolderOpen /> : <IoFolder />}
+          <BsFolderFill />
         </div>
         {title}
       </button>

@@ -1,5 +1,5 @@
 // import React from 'react'
-import { BsFilePlus, BsFolderPlus, BsFilter } from 'react-icons/bs';
+import { BsFileEarmarkPlus, BsFolderPlus, BsFilter } from 'react-icons/bs';
 
 function Navbar() {
   return (
@@ -8,7 +8,7 @@ function Navbar() {
       <div className="nav-icon-container">
         <BsFilter className="nav-icon" />
         <BsFolderPlus className="nav-icon" />
-        <BsFilePlus className="nav-icon" />
+        <BsFileEarmarkPlus className="nav-icon" />
       </div>
     </div>
   );
