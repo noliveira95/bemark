@@ -1,9 +1,10 @@
 // import React from 'react';
 import PropTypes from 'prop-types';
-
+import { IoDocumentOutline } from 'react-icons/io5';
 function Bookmark({ url, title }) {
   return (
     <li className="bookmark">
+      <IoDocumentOutline className="bookmark-icon" />
       <a href={url} target="_blank" rel="noreferrer">
         {title}
       </a>
