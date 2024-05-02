@@ -11,7 +11,7 @@ function Folder({ title, items }) {
         <div className="folder-icon">
           {isOpen ? <IoFolderOpen /> : <IoFolder />}
         </div>
-        <p className="folder-title">{title}</p>
+        {title}
       </button>
       <ul className={`folder-items ${isOpen ? 'visible' : 'hidden'}`}>
         {getAllItems(items)}
