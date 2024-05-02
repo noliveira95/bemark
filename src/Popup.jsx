@@ -1,6 +1,7 @@
 import './Popup.css';
 import { useEffect, useState } from 'react';
 import { getAllItems } from './utils';
+import Navbar from './components/Navbar';
 
 function Popup() {
   const [allItems, setAllItems] = useState([]);
@@ -12,6 +13,7 @@ function Popup() {
 
   return (
     <div id="popup">
+      <Navbar />
       <ul className="items-list">{getAllItems(allItems)}</ul>
     </div>
   );

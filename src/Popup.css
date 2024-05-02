@@ -19,6 +19,36 @@
   overflow: auto;
 }
 
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
+}
+
+.nav-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
+  margin-right: 16px;
+}
+
+.nav-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: black;
+  transition: color 0.25s;
+}
+
 .bookmark {
   display: flex;
   justify-content: flex-start;
