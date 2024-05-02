@@ -62,7 +62,8 @@
 } */
 
 .folder-items {
-  padding: 0 16px;
+  margin: 0 16px;
+  border-left: 1px solid lightgray;
 }
 
 .bookmark-icon,
