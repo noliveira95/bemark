@@ -11,8 +11,8 @@ function Popup() {
   }, []);
 
   return (
-    <div className="popup">
-      <ul id="bookmarkList">{getAllItems(allItems)}</ul>
+    <div id="popup">
+      <ul className="items-list">{getAllItems(allItems)}</ul>
     </div>
   );
 }
