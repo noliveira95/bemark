@@ -1,42 +1,12 @@
-#root {
-  overflow-y: scroll;
-  width: 375px;
-  height: 600px;
-}
-
-p {
-  font-size: 2rem;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  text-align: start;
-}
-
-/* Utility classes */
-
-.visible {
-  display: block;
-}
-
-.hidden {
-  display: none;
-}
-
-/* End utility classes */
-
 .popup {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
+  width: 375px;
+  height: 600px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .popup::-webkit-scrollbar {
@@ -52,25 +22,11 @@ li {
   margin: 0.5rem;
 }
 
-.bookmark-icon,
-.folder-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  min-width: 1.5rem;
-}
-
-.bookmark-title,
-.folder-title {
+.bookmark-title {
   font-size: 1rem;
   text-decoration: none;
   color: black;
   max-width: 30ch;
-}
-
-.folder {
-  cursor: pointer;
 }
 
 .folder-button {
@@ -80,8 +36,28 @@ li {
   gap: 0.5rem;
   padding: 0.5rem;
   margin: 0.5rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-bottom: 1px solid lightgray;
+  background-color: transparent;
+  font-size: 1rem;
+  color: black;
+  transition: color 0.25s;
 }
+.folder-button:hover {
+  color: lightgray;
+}
+/* .folder-button:focus,
+.folder-button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
 
-.folder-title {
-  display: inline;
+.bookmark-icon,
+.folder-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  min-width: 1.5rem;
+  color: black;
 }
