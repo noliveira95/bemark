@@ -2,6 +2,7 @@ import './Popup.css';
 import { useEffect, useState } from 'react';
 import { getAllItems } from './utils';
 import Navbar from './components/Navbar';
+import Search from './components/Search';
 
 function Popup() {
   const [allItems, setAllItems] = useState([]);
@@ -15,6 +16,7 @@ function Popup() {
     <div id="popup">
       <Navbar />
       <ul className="items-list">{getAllItems(allItems)}</ul>
+      <Search />
     </div>
   );
 }
