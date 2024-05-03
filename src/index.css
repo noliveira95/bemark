@@ -55,6 +55,7 @@ li {
   display: none;
 }
 
+.loading-message,
 .no-items-message {
   font-size: 1.25rem;
   padding: 8px;
