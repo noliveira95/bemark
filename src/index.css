@@ -54,6 +54,13 @@ li {
 .hidden {
   display: none;
 }
+
+.no-items-message {
+  font-size: 1.25rem;
+  padding: 8px;
+  width: 100%;
+  text-align: center;
+}
 /* End utility classes */
 
 /* Media queries */

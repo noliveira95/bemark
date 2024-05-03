@@ -20,8 +20,14 @@ function Popup() {
     <div id="popup">
       <Navbar />
       <h1>Favorites</h1>
+      {favorites.length === 0 && (
+        <p className="no-items-message">No favorites yet!</p>
+      )}
       <ul className="favorites-list">{favorites}</ul>
       <h1>All Bookmarks</h1>
+      {allItems.length === 0 && (
+        <p className="no-items-message">No bookmarks yet!</p>
+      )}
       <ul className="items-list">{getAllItems(allItems)}</ul>
       <Search />
     </div>
