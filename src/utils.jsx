@@ -116,11 +116,15 @@ export async function getFavorites(nodes) {
       (node) => node.title === 'Bemark Favorites'
     );
 
+    let filteredFavorites = favorites?.children?.filter((f) => f.url);
+    if (filteredFavorites.length > 3) {
+      filteredFavorites = filteredFavorites.slice(0, 3);
+    }
+
     return (
-      favorites?.children
-        ?.filter((f) => f.url)
-        ?.slice(0, 3)
-        ?.map((f) => <Bookmark key={f.id} url={f.url} title={f.title} />) ?? []
+      filteredFavorites?.map((f) => (
+        <Bookmark key={f.id} url={f.url} title={f.title} />
+      )) ?? []
     );
   } catch (error) {
     console.error('Error retrieving favorites:', error);
