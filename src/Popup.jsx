@@ -19,7 +19,9 @@ function Popup() {
   return (
     <div id="popup">
       <Navbar />
+      <h1>Favorites</h1>
       <ul className="favorites-list">{favorites}</ul>
+      <h1>All Bookmarks</h1>
       <ul className="items-list">{getAllItems(allItems)}</ul>
       <Search />
     </div>
