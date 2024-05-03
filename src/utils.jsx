@@ -1,6 +1,14 @@
 import Bookmark from './components/Bookmark';
 import Folder from './components/Folder';
 
+export function getBookmarkTree() {
+  return new Promise((resolve) => {
+    chrome.bookmarks.getTree((tree) => {
+      resolve(tree[0].children);
+    });
+  });
+}
+
 export function getAllItems(nodes) {
   return nodes.map((node) => {
     if (node.url) {
