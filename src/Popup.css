@@ -7,6 +7,7 @@
   height: 600px;
   overflow-x: hidden;
   overflow-y: scroll;
+  position: relative;
 }
 
 #popup::-webkit-scrollbar {
@@ -107,13 +108,17 @@
   align-items: center;
   width: 100%;
   padding: 0.5rem 0;
+  background-color: whitesmoke;
   border-top: 1px solid lightgray;
+  position: fixed;
+  bottom: 0;
 }
 
 .search-field-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
   border: 1px solid lightgray;
   border-radius: 32px;
   padding: 0.5em;
