@@ -37,21 +37,37 @@ export function getFolders(nodes) {
   });
 }
 
-export function getFavorites(nodes) {
-  return nodes.map((node) => {
-    if (node.title === 'Bookmarks') {
-      if (node.url) {
-        return <Bookmark key={node.id} url={node.url} title={node.title} />;
-      } else {
-        return (
-          <Folder key={node.id} title={node.title} items={node.children} />
-        );
-      }
-    } else {
-      return;
-    }
-  });
+export async function getFavorites(nodes) {
+  try {
+    const otherBookmarks = await nodes.find(
+      (node) => node.title === 'Other Bookmarks'
+    );
+    const favorites = await otherBookmarks?.children?.find(
+      (node) => node.title === 'Bemark Favorites'
+    );
+
+    return (
+      favorites?.children?.map((f) => {
+        if (f.url) {
+          return <Bookmark key={f.id} url={f.url} title={f.title} />;
+        } else {
+          return <Folder key={f.id} title={f.title} items={f.children} />;
+        }
+      }) ?? []
+    );
+  } catch (error) {
+    console.error('Error retrieving favorites:', error);
+    return [];
+  }
 }
+
+// if (node.url) {
+//   return <Bookmark key={node.id} url={node.url} title={node.title} />;
+// } else {
+//   return (
+//     <Folder key={node.id} title={node.title} items={node.children} />
+//   );
+// }
 
 // Add a bookmark for www.google.com
 // export function addBookmark() {
