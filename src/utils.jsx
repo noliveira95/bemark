@@ -117,13 +117,10 @@ export async function getFavorites(nodes) {
     );
 
     return (
-      favorites?.children?.map((f) => {
-        if (f.url) {
-          return <Bookmark key={f.id} url={f.url} title={f.title} />;
-        } else {
-          return <Folder key={f.id} title={f.title} items={f.children} />;
-        }
-      }) ?? []
+      favorites?.children
+        ?.filter((f) => f.url)
+        ?.slice(0, 3)
+        ?.map((f) => <Bookmark key={f.id} url={f.url} title={f.title} />) ?? []
     );
   } catch (error) {
     console.error('Error retrieving favorites:', error);
