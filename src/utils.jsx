@@ -116,13 +116,13 @@ export async function getFavorites(nodes) {
       (node) => node.title === 'Bemark Favorites'
     );
 
-    let filteredFavorites = favorites?.children?.filter((f) => f.url);
-    if (filteredFavorites.length > 3) {
-      filteredFavorites = filteredFavorites.slice(0, 3);
+    let bookmarks = favorites?.children?.filter((f) => f.url);
+    if (bookmarks.length > 3) {
+      bookmarks = bookmarks.slice(0, 3);
     }
 
     return (
-      filteredFavorites?.map((f) => (
+      bookmarks?.map((f) => (
         <Bookmark key={f.id} url={f.url} title={f.title} />
       )) ?? []
     );
