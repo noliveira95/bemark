@@ -57,10 +57,10 @@ li {
 
 .loading-message,
 .no-items-message {
-  font-size: 1.25rem;
-  padding: 8px;
+  font-size: 0.8rem;
   width: 100%;
   text-align: center;
+  color: gray;
 }
 /* End utility classes */
 
