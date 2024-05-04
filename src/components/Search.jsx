@@ -28,7 +28,13 @@ function Search() {
             type="search"
             className="search-field"
             onFocus={() => setShowResults(true)}
-            onBlur={() => setShowResults(false)}
+            onBlur={() => {
+              if (searchResults.length !== 0) {
+                return;
+              } else {
+                setShowResults(false);
+              }
+            }}
             onChange={(e) => setSearchResults(e.target.value)}
           />
         </div>

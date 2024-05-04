@@ -201,6 +201,7 @@
   height: calc(100% - 32px);
   padding: 0.5rem;
   background-color: white;
+  overflow-y: scroll;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s;
