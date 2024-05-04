@@ -123,7 +123,7 @@ export async function getFavorites(nodes) {
 
     return (
       bookmarks?.map((f) => (
-        <Bookmark key={f.id} url={f.url} title={f.title} />
+        <Bookmark key={f.id} url={f.url} title={f.title} isFavorite={true} />
       )) ?? []
     );
   } catch (error) {
