@@ -155,6 +155,8 @@
   padding: 0.5rem 0;
   background-color: whitesmoke;
   border-top: 1px solid lightgray;
+  position: fixed;
+  bottom: 0;
   pointer-events: auto;
 }
 
