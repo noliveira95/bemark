@@ -4,19 +4,17 @@ import SearchResults from './SearchResults';
 
 function Search() {
   const [showResults, setShowResults] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    // Function to search bookmarks based on query
     const searchBookmarks = async (query) => {
-      // Use chrome.bookmarks.search() method to search for bookmarks
       const results = await chrome.bookmarks.search(query);
       setSearchResults(results);
     };
 
-    // Call searchBookmarks() when results state changes
-    searchBookmarks(searchResults);
-  }, [searchResults]);
+    searchBookmarks(searchQuery);
+  }, [searchQuery]);
 
   return (
     <div id="search">
@@ -35,7 +33,7 @@ function Search() {
                 setShowResults(false);
               }
             }}
-            onChange={(e) => setSearchResults(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
       </div>

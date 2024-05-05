@@ -14,14 +14,18 @@ export function getBookmarkTree() {
 }
 
 // Retrieve all items in the bookmarks tree
-export function getAllItems(nodes) {
+export function getAllItems(nodes = []) {
   try {
     return nodes.map((node) => {
       if (node.url) {
         return <Bookmark key={node.id} url={node.url} title={node.title} />;
       } else {
         return (
-          <Folder key={node.id} title={node.title} items={node.children} />
+          <Folder
+            key={node.id}
+            title={node.title}
+            items={node.children ?? []}
+          />
         );
       }
     });
