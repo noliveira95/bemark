@@ -16,6 +16,8 @@ function Popup() {
     <div id="popup">
       <Navbar />
       <FavoritesList allItems={allItems} />
+      {/* TODO: Make title sticky when top is reached */}
+      {/* TODO: Add actions for all bookmarks */}
       <h1>All Bookmarks</h1>
       {allItems.length === 0 && (
         <p className="no-items-message">No bookmarks yet!</p>
