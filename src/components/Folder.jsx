@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getAllItems } from '../utils';
+import { getAllItems } from '../utils/utils';
 import PropTypes from 'prop-types';
 import { BsFolderFill } from 'react-icons/bs';
 

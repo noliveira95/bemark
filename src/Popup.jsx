@@ -1,6 +1,6 @@
 import './Popup.css';
 import { useEffect, useState } from 'react';
-import { getAllItems, getBookmarkTree } from './utils';
+import { getAllItems, getBookmarkTree } from './utils/utils';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
 import FavoritesList from './components/FavoritesList';

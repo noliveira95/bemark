@@ -1,4 +1,4 @@
-import { getAllItems } from '../utils';
+import { getAllItems } from '../utils/utils';
 import { PropTypes } from 'prop-types';
 
 function SearchResults({ showResults, results }) {

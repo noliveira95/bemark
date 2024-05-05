@@ -1,6 +1,6 @@
 import '../Popup.css';
 import { useState, useEffect } from 'react';
-import { getFavorites } from '../utils';
+import { getFavorites } from '../utils/favorites';
 import { PropTypes } from 'prop-types';
 
 function FavoritesList({ allItems }) {
