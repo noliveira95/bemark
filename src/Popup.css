@@ -48,6 +48,17 @@
   transition: color 0.25s;
 }
 
+.items-list-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  background-color: white;
+  position: sticky;
+  top: 48px;
+}
+
 .items-list,
 .favorites-list {
   width: 100%;

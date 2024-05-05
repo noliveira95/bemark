@@ -18,7 +18,10 @@ function Popup() {
       <FavoritesList allItems={allItems} />
       {/* TODO: Make title sticky when top is reached */}
       {/* TODO: Add actions for all bookmarks */}
-      <h1>All Bookmarks</h1>
+      <div className="items-list-title">
+        <h1>All Bookmarks</h1>
+        <div className="title-actions"></div>
+      </div>
       {allItems.length === 0 && (
         <p className="no-items-message">No bookmarks yet!</p>
       )}
