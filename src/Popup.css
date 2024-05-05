@@ -64,7 +64,7 @@
   font-size: 1rem;
   text-decoration: none;
   color: black;
-  max-width: 30ch;
+  max-width: 50%;
 }
 
 .bookmark-actions {
@@ -97,9 +97,9 @@
   color: black;
 }
 
-.folder {
+/* .folder {
   border-bottom: 1px solid lightgray;
-}
+} */
 
 .folder-button {
   display: flex;
