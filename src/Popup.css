@@ -22,7 +22,6 @@
   height: 32px;
   padding: 0.5rem;
   background-color: whitesmoke;
-  border-bottom: 1px solid lightgray;
   position: sticky;
   top: 0;
 }
@@ -168,7 +167,6 @@
   height: 32px;
   padding: 0.5rem 0;
   background-color: whitesmoke;
-  border-top: 1px solid lightgray;
   position: fixed;
   bottom: 0;
   pointer-events: auto;
