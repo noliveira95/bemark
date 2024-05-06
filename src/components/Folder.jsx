@@ -13,7 +13,9 @@ function Folder({ title, items }) {
         </div>
         {title}
       </button>
-      <ul className={`folder-items ${isOpen ? 'visible' : 'hidden'}`}>
+      <ul
+        className={`folder-items ${isOpen ? 'display-block' : 'display-none'}`}
+      >
         {getAllItems(items)}
       </ul>
     </li>
