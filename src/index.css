@@ -33,7 +33,8 @@ body {
 h1 {
   font-size: 1.25rem;
   line-height: 1.2;
-  padding: 0 16px;
+  margin: 0;
+  padding: 16px;
 }
 
 p {
