@@ -4,6 +4,7 @@ import { getAllItems, getBookmarkTree } from './utils/utils';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
 import FavoritesList from './components/FavoritesList';
+import { BsDashSquare } from 'react-icons/bs';
 
 function Popup() {
   const [allItems, setAllItems] = useState([]);
@@ -19,7 +20,9 @@ function Popup() {
       {/* TODO: Add actions for all bookmarks */}
       <div className="items-list-title">
         <h1>All Bookmarks</h1>
-        <div className="title-actions"></div>
+        <div className="title-actions">
+          <BsDashSquare className="title-actions-button" />
+        </div>
       </div>
       {allItems.length === 0 && (
         <p className="no-items-message">No bookmarks yet!</p>
