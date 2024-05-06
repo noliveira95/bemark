@@ -8,19 +8,37 @@ import { BsDashSquare } from 'react-icons/bs';
 
 function Popup() {
   const [allItems, setAllItems] = useState([]);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     getBookmarkTree().then(setAllItems);
+  }, []);
+
+  useEffect(() => {
+    const popup = document.getElementById('popup');
+
+    const handleScroll = () => {
+      setScrollY(popup.scrollTop);
+    };
+
+    popup.addEventListener('scroll', handleScroll);
+
+    return () => {
+      popup.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
     <div id="popup">
       <Navbar />
       <FavoritesList allItems={allItems} />
-      {/* TODO: Add actions for all bookmarks */}
       <div className="items-list-title">
         <h1>All Bookmarks</h1>
-        <div className="title-actions">
+        <div
+          className={`title-actions ${
+            scrollY >= 220 ? 'opacity-1' : 'opacity-0'
+          }`}
+        >
           <BsDashSquare className="title-actions-button" />
         </div>
       </div>
