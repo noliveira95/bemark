@@ -9,7 +9,15 @@ function Search() {
 
   useEffect(() => {
     const searchBookmarks = async (query) => {
+      const lowerCaseQuery = query.toLowerCase();
       const results = await chrome.bookmarks.search(query);
+      results.sort((a, b) => {
+        const lowerCaseTitleA = a.title.toLowerCase();
+        const lowerCaseTitleB = b.title.toLowerCase();
+        if (lowerCaseTitleA === lowerCaseQuery) return -1;
+        if (lowerCaseTitleB === lowerCaseQuery) return 1;
+        return 0;
+      });
       setSearchResults(results);
     };
 
