@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import SearchResults from './SearchResults';
 import SearchField from './SearchField';
+import { BsMic } from 'react-icons/bs';
 
 function Search() {
   const [showResults, setShowResults] = useState(false);
@@ -33,6 +34,9 @@ function Search() {
           setSearchQuery={setSearchQuery}
           searchResults={searchResults}
         />
+        <button>
+          <BsMic className="mic-icon" />
+        </button>
       </div>
     </div>
   );
