@@ -1,12 +1,25 @@
 import { useState, useEffect } from 'react';
 import SearchResults from './SearchResults';
 import SearchField from './SearchField';
-import { BsMic } from 'react-icons/bs';
+import { BsMic, BsStop } from 'react-icons/bs';
+import useVoiceToText from '../hooks/useVoiceToText';
 
 function Search() {
   const [showResults, setShowResults] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+
+  const { isListening, startListening, stopListening, transcript } =
+    useVoiceToText({ continuous: true });
+
+  const handleMicClick = () => {
+    if (isListening) {
+      stopListening();
+      setSearchQuery(transcript);
+    } else {
+      startListening();
+    }
+  };
 
   useEffect(() => {
     const searchBookmarks = async (query) => {
@@ -34,9 +47,15 @@ function Search() {
           setSearchQuery={setSearchQuery}
           searchResults={searchResults}
         />
-        <button>
-          <BsMic className="mic-icon" />
-        </button>
+        {isListening ? (
+          <button onClick={handleMicClick}>
+            <BsStop className="mic-icon" />
+          </button>
+        ) : (
+          <button onClick={handleMicClick}>
+            <BsMic className="mic-icon" />
+          </button>
+        )}
       </div>
     </div>
   );
