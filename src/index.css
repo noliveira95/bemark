@@ -11,9 +11,27 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Resets */
 img {
   display: block;
 }
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  appearance: none;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+}
+/* End resets */
 
 a {
   font-weight: 500;
@@ -26,6 +44,10 @@ a:hover {
 
 body {
   margin: 0;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 h1 {
