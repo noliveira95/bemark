@@ -1,4 +1,4 @@
-import { getAllItems } from '../utils/utils';
+import { getBookmarks } from '../utils/utils';
 import { PropTypes } from 'prop-types';
 
 function SearchResults({ showResults, results }) {
@@ -8,7 +8,7 @@ function SearchResults({ showResults, results }) {
       {results.length === 0 ? (
         <p className="no-items-message">Start typing to search</p>
       ) : (
-        <ul>{getAllItems(results)}</ul>
+        <ul>{getBookmarks(results)}</ul>
       )}
     </div>
   );
