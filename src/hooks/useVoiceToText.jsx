@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useState, useRef } from 'react';
 
-const useVoiceToText = () => {
+const useVoiceToText = (options = {}) => {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const recognitionRef = useRef(null);
 
-  useEffect((options) => {
+  useEffect(() => {
     if (!('webkitSpeechRecognition' in window)) {
       console.error('Browser not supported');
       return;
@@ -19,9 +19,7 @@ const useVoiceToText = () => {
 
     if ('webkitSpeechGrammarList' in window) {
       const grammar =
-        '#JSGF V1.0; grammar phrase; public <phrase> = ' +
-        options.grammar.join(' | ') +
-        ' ;';
+        '#JSGF V1.0; grammar punctuation; public <punc> = . | , | ? | ! | ; | : ;';
       const speechRecognitionList = new window.webkitSpeechGrammarList();
       speechRecognitionList.addFromString(grammar);
       recognition.grammars = speechRecognitionList;
@@ -45,7 +43,12 @@ const useVoiceToText = () => {
     };
 
     return () => recognition.stop();
-  }, []);
+  }, [
+    options.continuous,
+    options.grammar,
+    options.interimResults,
+    options.lang,
+  ]);
 
   const startListening = () => {
     if (recognitionRef.current && !isListening) {
