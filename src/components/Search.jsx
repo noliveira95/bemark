@@ -15,7 +15,6 @@ function Search() {
   const handleMicClick = () => {
     if (isListening) {
       stopListening();
-      setSearchQuery(transcript);
     } else {
       startListening();
     }
@@ -35,18 +34,24 @@ function Search() {
       setSearchResults(results);
     };
 
-    searchBookmarks(searchQuery);
-  }, [searchQuery]);
+    if (isListening) {
+      searchBookmarks(transcript);
+    } else {
+      searchBookmarks(searchQuery);
+    }
+  }, [isListening, searchQuery, transcript]);
 
   return (
     <div id="search">
       <SearchResults showResults={showResults} results={searchResults} />
       <div className="search-bar">
         <SearchField
+          isListening={isListening}
           setShowResults={setShowResults}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           searchResults={searchResults}
+          transcript={transcript}
         />
         {isListening ? (
           <button onClick={handleMicClick}>
