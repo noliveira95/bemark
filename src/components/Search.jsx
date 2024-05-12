@@ -44,6 +44,7 @@ function Search() {
       <div className="search-bar">
         <SearchField
           setShowResults={setShowResults}
+          searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           searchResults={searchResults}
         />

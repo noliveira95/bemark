@@ -1,13 +1,20 @@
 import { BsSearch } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
-function SearchField({ setShowResults, setSearchQuery, searchResults }) {
+function SearchField({
+  setShowResults,
+  searchQuery,
+  setSearchQuery,
+  searchResults,
+}) {
   return (
     <div className="search-field-container">
       <BsSearch className="search-icon" />
       <input
         type="search"
         className="search-field"
+        placeholder="Search bookmarks..."
+        value={searchQuery}
         onFocus={() => setShowResults(true)}
         onBlur={() => {
           if (searchResults.length !== 0) {
