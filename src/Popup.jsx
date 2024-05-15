@@ -1,18 +1,11 @@
 import './Popup.css';
 import { useEffect, useState } from 'react';
-import { getBookmarkTree } from './utils/utils';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
-import FavoritesList from './components/FavoritesList';
-import ItemsList from './components/ItemsList';
+import Home from './screens/Home';
 
 function Popup() {
-  const [allItems, setAllItems] = useState([]);
   const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    getBookmarkTree().then(setAllItems);
-  }, []);
 
   useEffect(() => {
     const popup = document.getElementById('popup');
@@ -31,8 +24,7 @@ function Popup() {
   return (
     <div id="popup">
       <Navbar />
-      <FavoritesList allItems={allItems} />
-      <ItemsList allItems={allItems} scrollY={scrollY} />
+      <Home scrollY={scrollY} />
       <Search />
     </div>
   );
