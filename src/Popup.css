@@ -234,9 +234,18 @@
   overflow-y: scroll;
   opacity: 0;
   pointer-events: none;
+  position: relative;
   transition: opacity 0.25s;
 }
 .search-results.active {
   opacity: 1;
   pointer-events: auto;
+}
+
+.close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  font-size: 1.25rem;
 }

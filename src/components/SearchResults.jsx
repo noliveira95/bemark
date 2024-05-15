@@ -1,9 +1,13 @@
 import { getBookmarks } from '../utils/utils';
 import { PropTypes } from 'prop-types';
+import { BsX } from 'react-icons/bs';
 
-function SearchResults({ showResults, results }) {
+function SearchResults({ showResults, results, onClose }) {
   return (
     <div className={`search-results ${showResults ? 'active' : ''}`}>
+      <button onClick={onClose}>
+        <BsX className="close-icon" />
+      </button>
       <h1>Search Results</h1>
       {results.length === 0 ? (
         <p className="no-items-message">Start typing to search</p>
@@ -17,6 +21,7 @@ function SearchResults({ showResults, results }) {
 SearchResults.propTypes = {
   showResults: PropTypes.bool,
   results: PropTypes.array,
+  onClose: PropTypes.func,
 };
 
 export default SearchResults;

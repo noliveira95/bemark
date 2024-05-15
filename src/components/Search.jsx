@@ -20,6 +20,10 @@ function Search() {
     }
   };
 
+  const handleClose = () => {
+    setShowResults(false);
+  };
+
   useEffect(() => {
     const searchBookmarks = async (query) => {
       const lowerCaseQuery = query.toLowerCase();
@@ -43,7 +47,11 @@ function Search() {
 
   return (
     <div id="search">
-      <SearchResults showResults={showResults} results={searchResults} />
+      <SearchResults
+        showResults={showResults}
+        results={searchResults}
+        onClose={handleClose}
+      />
       <div className="search-bar">
         <SearchField
           isListening={isListening}
