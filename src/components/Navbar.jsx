@@ -1,17 +1,28 @@
 // import React from 'react'
 import { BsFileEarmarkPlus, BsFolderPlus, BsFilter } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 
-function Navbar() {
+function Navbar({ setScreen }) {
   return (
     <div id="navbar">
       <div className="logo">Filler</div>
       <div className="nav-icon-container">
-        <BsFilter className="nav-icon" />
-        <BsFolderPlus className="nav-icon" />
-        <BsFileEarmarkPlus className="nav-icon" />
+        <button onClick={setScreen('filters')} className="nav-icon">
+          <BsFilter />
+        </button>
+        <button onClick={setScreen('addFolder')} className="nav-icon">
+          <BsFolderPlus />
+        </button>
+        <button onClick={setScreen('addBookmark')} className="nav-icon">
+          <BsFileEarmarkPlus />
+        </button>
       </div>
     </div>
   );
 }
+
+Navbar.propTypes = {
+  setScreen: PropTypes.func.isRequired,
+};
 
 export default Navbar;

@@ -6,6 +6,11 @@ import Home from './screens/Home';
 
 function Popup() {
   const [scrollY, setScrollY] = useState(0);
+  const [currentScreen, setCurrentScreen] = useState('home');
+
+  const setScreen = (screen) => {
+    setCurrentScreen(screen);
+  };
 
   useEffect(() => {
     const popup = document.getElementById('popup');
@@ -23,7 +28,8 @@ function Popup() {
 
   return (
     <div id="popup">
-      <Navbar />
+      <Navbar setScreen={setScreen} />
+      {currentScreen === 'home' ?? <Home scrollY={scrollY} />}
       <Home scrollY={scrollY} />
       <Search />
     </div>
