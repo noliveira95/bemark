@@ -7,13 +7,13 @@ function Navbar({ setScreen }) {
     <div id="navbar">
       <div className="logo">Filler</div>
       <div className="nav-icon-container">
-        <button onClick={setScreen('filters')} className="nav-icon">
+        <button onClick={() => setScreen('filters')} className="nav-icon">
           <BsFilter />
         </button>
-        <button onClick={setScreen('addFolder')} className="nav-icon">
+        <button onClick={() => setScreen('addFolder')} className="nav-icon">
           <BsFolderPlus />
         </button>
-        <button onClick={setScreen('addBookmark')} className="nav-icon">
+        <button onClick={() => setScreen('addBookmark')} className="nav-icon">
           <BsFileEarmarkPlus />
         </button>
       </div>

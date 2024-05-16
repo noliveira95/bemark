@@ -24,13 +24,12 @@ function Popup() {
     return () => {
       popup.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [currentScreen]);
 
   return (
     <div id="popup">
       <Navbar setScreen={setScreen} />
-      {currentScreen === 'home' ?? <Home scrollY={scrollY} />}
-      <Home scrollY={scrollY} />
+      {currentScreen === 'home' && <Home scrollY={scrollY} />}
       <Search />
     </div>
   );
