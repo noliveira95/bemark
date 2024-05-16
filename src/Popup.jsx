@@ -24,7 +24,7 @@ function Popup() {
     return () => {
       popup.removeEventListener('scroll', handleScroll);
     };
-  }, [currentScreen]);
+  });
 
   return (
     <div id="popup">
