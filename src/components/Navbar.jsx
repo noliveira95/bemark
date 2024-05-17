@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 function Navbar({ setScreen }) {
   return (
     <div id="navbar">
-      <div className="logo">Filler</div>
+      <div className="logo" onClick={() => setScreen('home')}>
+        Filler
+      </div>
       <div className="nav-icon-container">
         <button onClick={() => setScreen('filters')} className="nav-icon">
           <BsFilter />
