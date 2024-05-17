@@ -1,33 +1,26 @@
 import Checkbox from './Checkbox';
-import Dropdown from './Dropdown';
+// import Dropdown from './Dropdown';
 import InputField from './InputField';
 
 // BookmarkForm.jsx
-function BookmarkForm() {
-  const categories = [
-    { label: 'Personal', value: 'personal' },
-    { label: 'Work', value: 'work' },
-    { label: 'Other', value: 'other' },
-  ];
-
+function AddBookmarkForm() {
   return (
-    <form>
-      <InputField label="Title" value={title} onChange={handleTitleChange} />
-      <InputField label="URL" value={url} onChange={handleUrlChange} />
-      <Dropdown
+    <div>
+      <h1>Add Bookmark</h1>
+      <form>
+        <InputField label="Title" value={'title'} onChange={null} />
+        <InputField label="URL" value={'url'} onChange={null} />
+        {/* <Dropdown
         label="Category"
         options={categories}
         value={category}
         onChange={handleCategoryChange}
-      />
-      <Checkbox
-        label="Favorite"
-        checked={isFavorite}
-        onChange={handleFavoriteChange}
-      />
-      <button type="submit">Add Bookmark</button>
-    </form>
+      /> */}
+        <Checkbox label="Favorite" checked={null} onChange={null} />
+        <button type="submit">Add Bookmark</button>
+      </form>
+    </div>
   );
 }
 
-export default BookmarkForm;
+export default AddBookmarkForm;
