@@ -1,10 +1,9 @@
-// import React from 'react'
 import { BsFileEarmarkPlus, BsFolderPlus, BsFilter } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
 function Navbar({ setScreen }) {
   return (
-    <div id="navbar">
+    <div id="navbar" className="navbar">
       <div className="logo" onClick={() => setScreen('home')}>
         Filler
       </div>

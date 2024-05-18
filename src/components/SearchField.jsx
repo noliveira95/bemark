@@ -1,3 +1,4 @@
+import styles from '../styles/Search.module.css';
 import { useEffect, useRef } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import PropTypes from 'prop-types';
@@ -25,10 +26,10 @@ function SearchField({
   }, [isListening, setSearchQuery, transcript]);
 
   return (
-    <div className="search-field-container">
-      <BsSearch className="search-icon" />
+    <div className={styles['search-field-container']}>
+      <BsSearch className={styles['search-icon']} />
       <input
-        className="search-field"
+        className={styles['search-field']}
         placeholder="Search bookmarks..."
         ref={searchFieldRef}
         type="search"

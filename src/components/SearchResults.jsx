@@ -1,12 +1,17 @@
+import styles from '../styles/Search.module.css';
 import { getBookmarks } from '../utils/utils';
 import { PropTypes } from 'prop-types';
 import { BsX } from 'react-icons/bs';
 
 function SearchResults({ showResults, results, onClose }) {
   return (
-    <div className={`search-results ${showResults ? 'active' : ''}`}>
+    <div
+      className={`${styles['search-results']} ${
+        showResults ? styles.active : ''
+      }`}
+    >
       <button onClick={onClose}>
-        <BsX className="close-icon" />
+        <BsX className={styles['close-icon']} />
       </button>
       <h1>Search Results</h1>
       {results.length === 0 ? (

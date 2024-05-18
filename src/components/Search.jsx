@@ -1,3 +1,4 @@
+import styles from '../styles/Search.module.css';
 import { useState, useEffect } from 'react';
 import SearchResults from './SearchResults';
 import SearchField from './SearchField';
@@ -46,13 +47,13 @@ function Search() {
   }, [isListening, searchQuery, transcript]);
 
   return (
-    <div id="search">
+    <div id="search" className={styles.search}>
       <SearchResults
         showResults={showResults}
         results={searchResults}
         onClose={handleClose}
       />
-      <div className="search-bar">
+      <div className={styles['search-bar']}>
         <SearchField
           isListening={isListening}
           setShowResults={setShowResults}
@@ -63,11 +64,11 @@ function Search() {
         />
         {isListening ? (
           <button onClick={handleMicClick}>
-            <BsStop className="mic-icon" />
+            <BsStop className={styles['mic-icon']} />
           </button>
         ) : (
           <button onClick={handleMicClick}>
-            <BsMic className="mic-icon" />
+            <BsMic className={styles['mic-icon']} />
           </button>
         )}
       </div>
