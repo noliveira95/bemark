@@ -1,4 +1,4 @@
-import styles from '../styles/Search.module.css';
+import styles from './styles/Search.module.css';
 import { useEffect, useRef } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import PropTypes from 'prop-types';

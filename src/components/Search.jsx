@@ -1,4 +1,4 @@
-import styles from '../styles/Search.module.css';
+import styles from './styles/Search.module.css';
 import { useState, useEffect } from 'react';
 import SearchResults from './SearchResults';
 import SearchField from './SearchField';

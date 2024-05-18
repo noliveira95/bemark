@@ -1,4 +1,4 @@
-import styles from '../styles/Bookmark.module.css';
+import styles from './styles/Bookmark.module.css';
 import PropTypes from 'prop-types';
 import { BsFileEarmark, BsStar, BsPencil, BsTrash } from 'react-icons/bs';
 function Bookmark({ url, title, isFavorite = false }) {
