@@ -1,18 +1,23 @@
 import styles from './styles/AddBookmarkForm.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Checkbox from './Checkbox';
 import InputField from './InputField';
 import Button from './Button';
 import Dropdown from './Dropdown';
+import { getFolderOptions } from '../utils/utils';
 
 function AddBookmarkForm() {
-  const [dropdownValue, setDropdownValue] = useState('category-1');
+  const [dropdownValue, setDropdownValue] = useState('');
+  const [folders, setFolders] = useState([]);
 
-  const categories = [
-    { label: 'Category 1', value: 'category-1' },
-    { label: 'Category 2', value: 'category-2' },
-    { label: 'Category 3', value: 'category-3' },
-  ];
+  useEffect(() => {
+    async function fetchFolderOptions() {
+      const folderOptions = await getFolderOptions();
+      setFolders(folderOptions);
+    }
+
+    fetchFolderOptions();
+  });
 
   function handleCategoryChange(event) {
     setDropdownValue(event.target.value);
@@ -24,7 +29,7 @@ function AddBookmarkForm() {
       <InputField label="URL" value={'url'} onChange={null} />
       <Dropdown
         label="Category"
-        options={categories}
+        options={folders}
         value={dropdownValue}
         onChange={handleCategoryChange}
       />

@@ -64,3 +64,19 @@ export function getFolders(nodes) {
     return [];
   }
 }
+
+// Retrieve folders for the folder dropdown menu
+export async function getFolderOptions() {
+  try {
+    const nodes = await getBookmarkTree();
+    return nodes.map((node) => {
+      if (node.url) {
+        return;
+      }
+      return { label: node.title, value: node.id };
+    });
+  } catch (error) {
+    console.error('Error retrieving folder options:', error);
+    return [];
+  }
+}
