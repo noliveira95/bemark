@@ -13,7 +13,7 @@ function SearchResults({ showResults, results, onClose }) {
       <button onClick={onClose}>
         <BsX className={styles['close-icon']} />
       </button>
-      <h1>Search Results</h1>
+      <h1 className={styles['search-results-heading']}>Search Results</h1>
       {results.length === 0 ? (
         <p className="no-items-message">Start typing to search</p>
       ) : (
