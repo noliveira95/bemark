@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
 import Home from './screens/Home';
-import AddBookmark from './components/AddBookmarkForm';
+import AddBookmark from './screens/AddBookmark';
 
 function Popup() {
   const [currentScreen, setCurrentScreen] = useState('home');
