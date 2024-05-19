@@ -2,6 +2,7 @@ import styles from './styles/AddBookmarkForm.module.css';
 import Checkbox from './Checkbox';
 // import Dropdown from './Dropdown';
 import InputField from './InputField';
+import Button from './Button';
 
 function AddBookmarkForm() {
   return (
@@ -15,7 +16,7 @@ function AddBookmarkForm() {
         onChange={handleCategoryChange}
       /> */}
       <Checkbox label="Favorite" checked={null} onChange={null} />
-      <button type="submit">Add Bookmark</button>
+      <Button label={'Add Bookmark'} />
     </form>
   );
 }
