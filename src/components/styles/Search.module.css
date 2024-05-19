@@ -63,7 +63,7 @@
   align-items: flex-start;
   width: 100%;
   height: calc(100% - 32px);
-  padding: 0.5rem;
+  padding: 0.5em;
   background-color: white;
   overflow-y: scroll;
   opacity: 0;
@@ -74,6 +74,10 @@
 .search-results.active {
   opacity: 1;
   pointer-events: auto;
+}
+
+.search-results-heading {
+  padding-left: 1em;
 }
 
 .close-icon {
