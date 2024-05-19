@@ -1,0 +1,19 @@
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.dropdown-label {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.dropdown-select {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
