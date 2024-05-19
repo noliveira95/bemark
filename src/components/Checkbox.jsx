@@ -1,10 +1,16 @@
+import styles from './styles/Checkbox.module.css';
 import PropTypes from 'prop-types';
 
 function Checkbox({ label, checked, onChange }) {
   return (
-    <div>
-      <label>{label}</label>
-      <input type="checkbox" checked={checked} onChange={onChange} />
+    <div className={styles['checkbox-container']}>
+      <input
+        className={styles.checkbox}
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+      />
+      <label className={styles['checkbox-label']}>{label}</label>
     </div>
   );
 }
