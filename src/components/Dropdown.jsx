@@ -1,7 +1,9 @@
+import { forwardRef } from 'react';
 import styles from './styles/Dropdown.module.css';
 import PropTypes from 'prop-types';
 
-function Dropdown({ label, options, value, onChange }) {
+const Dropdown = forwardRef((props, ref) => {
+  const { label, options, value, onChange } = props;
   return (
     <div className={styles['dropdown-container']}>
       <label className={styles['dropdown-label']}>{label}</label>
@@ -9,6 +11,7 @@ function Dropdown({ label, options, value, onChange }) {
         className={styles['dropdown-select']}
         value={value}
         onChange={onChange}
+        ref={ref}
       >
         {options.map((option, index) => (
           <option key={index} value={option.value}>
@@ -18,7 +21,9 @@ function Dropdown({ label, options, value, onChange }) {
       </select>
     </div>
   );
-}
+});
+
+Dropdown.displayName = 'Dropdown';
 
 Dropdown.propTypes = {
   label: PropTypes.string.isRequired,
