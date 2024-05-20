@@ -25,7 +25,7 @@ function ItemsList({ allItems }) {
 
 ItemsList.propTypes = {
   allItems: PropTypes.array.isRequired,
-  scrollY: PropTypes.number.isRequired,
+  scrollY: PropTypes.number,
 };
 
 export default ItemsList;

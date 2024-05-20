@@ -21,7 +21,7 @@ function Home({ scrollY }) {
 }
 
 Home.propTypes = {
-  scrollY: PropTypes.number.isRequired,
+  scrollY: PropTypes.number,
 };
 
 export default Home;
