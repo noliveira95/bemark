@@ -69,14 +69,24 @@ export function getFolders(nodes) {
 export async function getFolderOptions() {
   try {
     const nodes = await getBookmarkTree();
-    return nodes.map((node) => {
-      if (node.url) {
-        return;
-      }
-      return { label: node.title, value: node.id };
-    });
+    return getFolderOptionsRecursive(nodes);
   } catch (error) {
     console.error('Error retrieving folder options:', error);
     return [];
+  }
+
+  function getFolderOptionsRecursive(nodes) {
+    let folderOptions = [];
+    nodes.forEach((node) => {
+      if (!node.url) {
+        folderOptions.push({ label: node.title, value: node.id });
+        if (node.children) {
+          folderOptions = folderOptions.concat(
+            getFolderOptionsRecursive(node.children)
+          );
+        }
+      }
+    });
+    return folderOptions;
   }
 }
