@@ -9,7 +9,7 @@ const Dropdown = forwardRef((props, ref) => {
   return (
     <div className={styles['dropdown-container']}>
       <label className={styles['dropdown-label']}>{label}</label>
-      <div className={styles['folder-dropdown-row']}>
+      <div className={styles['add-folder-row']}>
         <select
           className={styles['dropdown-select']}
           value={value}
