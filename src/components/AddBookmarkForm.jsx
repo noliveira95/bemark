@@ -6,6 +6,7 @@ import Button from './Button';
 import Dropdown from './Dropdown';
 import { getFolderOptions } from '../utils/utils';
 import { useRef } from 'react';
+import IconButton from './IconButton';
 
 function AddBookmarkForm() {
   const [dropdownValue, setDropdownValue] = useState('');
@@ -66,13 +67,16 @@ function AddBookmarkForm() {
         checked={isChecked}
         onChange={handleCheckboxChange}
       />
-      <Dropdown
-        label="Folder"
-        options={folders}
-        value={dropdownValue}
-        onChange={handleFolderChange}
-        ref={dropdownRef}
-      />
+      <div className={styles['folder-dropdown-row']}>
+        <Dropdown
+          label="Folder"
+          options={folders}
+          value={dropdownValue}
+          onChange={handleFolderChange}
+          ref={dropdownRef}
+        />
+        <IconButton icon={'+'} />
+      </div>
       <Button label={'Add Bookmark'} />
     </form>
   );

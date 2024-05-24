@@ -1,3 +1,9 @@
 .add-bookmark-form {
   width: 80%;
 }
+
+.folder-dropdown-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
