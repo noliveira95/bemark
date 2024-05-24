@@ -24,6 +24,7 @@ const Dropdown = forwardRef((props, ref) => {
         </select>
         <IconButton
           icon={<BsFolderPlus className={styles['add-folder-icon']} />}
+          onClick={() => console.log('Add folder')}
         />
       </div>
     </div>
