@@ -1,12 +1,10 @@
 import styles from './styles/AddBookmarkForm.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Checkbox from './Checkbox';
 import InputField from './InputField';
 import Button from './Button';
 import Dropdown from './Dropdown';
 import { getFolderOptions } from '../utils/utils';
-import { useRef } from 'react';
-import IconButton from './IconButton';
 
 function AddBookmarkForm() {
   const [dropdownValue, setDropdownValue] = useState('');
@@ -67,16 +65,13 @@ function AddBookmarkForm() {
         checked={isChecked}
         onChange={handleCheckboxChange}
       />
-      <div className={styles['folder-dropdown-row']}>
-        <Dropdown
-          label="Folder"
-          options={folders}
-          value={dropdownValue}
-          onChange={handleFolderChange}
-          ref={dropdownRef}
-        />
-        <IconButton icon={'+'} />
-      </div>
+      <Dropdown
+        label="Folder"
+        options={folders}
+        value={dropdownValue}
+        onChange={handleFolderChange}
+        ref={dropdownRef}
+      />
       <Button label={'Add Bookmark'} />
     </form>
   );

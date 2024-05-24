@@ -1,7 +1,4 @@
 .icon-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  padding: 0;
+  width: fit-content;
+  height: fit-content;
 }
