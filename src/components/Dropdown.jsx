@@ -1,11 +1,13 @@
-import { forwardRef } from 'react';
+import { forwardRef, useContext } from 'react';
 import styles from './styles/Dropdown.module.css';
 import PropTypes from 'prop-types';
 import IconButton from './IconButton';
 import { BsFolderPlus } from 'react-icons/bs';
+import { ScreenContext } from '../Popup';
 
 const Dropdown = forwardRef((props, ref) => {
   const { label, options, value, onChange } = props;
+  const screen = useContext(ScreenContext);
   return (
     <div className={styles['dropdown-container']}>
       <label className={styles['dropdown-label']}>{label}</label>
@@ -24,7 +26,7 @@ const Dropdown = forwardRef((props, ref) => {
         </select>
         <IconButton
           icon={<BsFolderPlus className={styles['add-folder-icon']} />}
-          onClick={() => console.log('Add folder')}
+          onClick={() => screen.setScreen('addFolder')}
         />
       </div>
     </div>
