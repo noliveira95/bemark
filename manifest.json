@@ -4,5 +4,5 @@
   "version": "1.0",
   "description": "Bookmark manager extension",
   "action": { "default_popup": "index.html" },
-  "permissions": ["bookmarks"]
+  "permissions": ["bookmarks", "tabs"]
 }

@@ -1,19 +1,27 @@
 import styles from './styles/AddBookmarkForm.module.css';
-import { useState, useEffect, useRef } from 'react';
+import { useContext, useState, useEffect, useRef } from 'react';
 import Checkbox from './Checkbox';
 import InputField from './InputField';
 import Button from './Button';
 import Dropdown from './Dropdown';
 import { getFolderOptions } from '../utils/utils';
+import { createBookmark } from '../api/bookmarks';
+import { CurrentTabContext } from '../Popup';
 
 function AddBookmarkForm() {
-  const [dropdownValue, setDropdownValue] = useState('');
+  const { currentTab } = useContext(CurrentTabContext);
+  const [selectedFolder, setSelectedFolder] = useState('');
   const [folders, setFolders] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
-  const [title, setTitle] = useState('');
-  const [url, setUrl] = useState('');
+  const [title, setTitle] = useState(currentTab.title);
+  const [url, setUrl] = useState(currentTab.url);
 
   const dropdownRef = useRef();
+
+  useEffect(() => {
+    setTitle(currentTab.title);
+    setUrl(currentTab.url);
+  }, [currentTab]);
 
   useEffect(() => {
     async function fetchFolderOptions() {
@@ -24,12 +32,12 @@ function AddBookmarkForm() {
     fetchFolderOptions();
   }, []);
 
-  function handleTitleChange(event) {
-    setTitle(event.target.value);
+  function handleTitleChange(e) {
+    setTitle(e.target.value);
   }
 
-  function handleUrlChange(event) {
-    setUrl(event.target.value);
+  function handleUrlChange(e) {
+    setUrl(e.target.value);
   }
 
   function handleCheckboxChange() {
@@ -42,8 +50,8 @@ function AddBookmarkForm() {
     }
   }
 
-  function handleFolderChange(event) {
-    setDropdownValue(event.target.value);
+  function handleFolderChange(e) {
+    setSelectedFolder(e.target.value);
   }
 
   return (
@@ -68,11 +76,17 @@ function AddBookmarkForm() {
       <Dropdown
         label="Folder"
         options={folders}
-        value={dropdownValue}
+        value={selectedFolder}
         onChange={handleFolderChange}
         ref={dropdownRef}
       />
-      <Button label={'Add Bookmark'} />
+      <Button
+        label={'Add Bookmark'}
+        onClick={(e) => {
+          e.preventDefault();
+          createBookmark(title, url, selectedFolder);
+        }}
+      />
     </form>
   );
 }

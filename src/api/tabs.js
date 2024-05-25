@@ -1,10 +1,10 @@
-export function getBookmarkTree() {
+export function getCurrentTabInfo() {
   return new Promise((resolve, reject) => {
-    chrome.bookmarks.getTree((tree) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (chrome.runtime.lastError) {
         reject(chrome.runtime.lastError);
       } else {
-        resolve(tree[0].children);
+        resolve(tabs[0]);
       }
     });
   });

@@ -1,6 +1,6 @@
 import Bookmark from '../components/Bookmark';
 import Folder from '../components/Folder';
-import { getBookmarkTree } from '../api/bookmarksApi';
+import { getBookmarkTree } from '../api/bookmarks';
 
 // Retrieve all items in the bookmarks tree
 export function getAllItems(nodes = []) {
