@@ -22,7 +22,7 @@ function AddBookmarkForm() {
     }
 
     fetchFolderOptions();
-  });
+  }, []);
 
   function handleTitleChange(event) {
     setTitle(event.target.value);
