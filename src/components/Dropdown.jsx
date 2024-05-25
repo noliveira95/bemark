@@ -12,18 +12,20 @@ const Dropdown = forwardRef((props, ref) => {
     <div className={styles['dropdown-container']}>
       <label className={styles['dropdown-label']}>{label}</label>
       <div className={styles['add-folder-row']}>
-        <select
-          className={styles['dropdown-select']}
-          value={value}
-          onChange={onChange}
-          ref={ref}
-        >
-          {options.map((option, index) => (
-            <option key={index} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        <div className={styles['dropdown-wrapper']}>
+          <select
+            className={styles['dropdown-select']}
+            value={value}
+            onChange={onChange}
+            ref={ref}
+          >
+            {options.map((option, index) => (
+              <option key={index} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
         <IconButton
           icon={<BsFolderPlus className={styles['add-folder-icon']} />}
           onClick={() => screen.setScreen('addFolder')}
