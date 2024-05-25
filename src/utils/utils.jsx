@@ -1,17 +1,6 @@
 import Bookmark from '../components/Bookmark';
 import Folder from '../components/Folder';
-
-export function getBookmarkTree() {
-  return new Promise((resolve, reject) => {
-    chrome.bookmarks.getTree((tree) => {
-      if (chrome.runtime.lastError) {
-        reject(chrome.runtime.lastError);
-      } else {
-        resolve(tree[0].children);
-      }
-    });
-  });
-}
+import { getBookmarkTree } from '../api/bookmarksApi';
 
 // Retrieve all items in the bookmarks tree
 export function getAllItems(nodes = []) {

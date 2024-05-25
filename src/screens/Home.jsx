@@ -2,7 +2,7 @@ import '../Popup.css';
 import { useEffect, useState } from 'react';
 import FavoritesList from '../components/FavoritesList';
 import ItemsList from '../components/ItemsList';
-import { getBookmarkTree } from '../utils/utils';
+import { getBookmarkTree } from '../api/bookmarksApi';
 import PropTypes from 'prop-types';
 
 function Home({ scrollY }) {
