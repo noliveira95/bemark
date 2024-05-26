@@ -90,7 +90,7 @@ function AddBookmarkForm() {
         label={'Add Bookmark'}
         onClick={(e) => {
           e.preventDefault();
-          createBookmark(title, url, selectedFolder);
+          createBookmark(title, url, selectedFolder, isChecked);
         }}
       />
     </form>

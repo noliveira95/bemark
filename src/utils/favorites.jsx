@@ -70,3 +70,27 @@ export async function getFavorites(nodes) {
     return [];
   }
 }
+
+export function createFavorite(title, url) {
+  return new Promise((resolve, reject) => {
+    chrome.bookmarks.search({ title: 'Bemark Favorites' }, (results) => {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError);
+      } else if (results.length === 0) {
+        reject(new Error('Bemark Favorites folder not found'));
+      } else {
+        const parentId = results[0].id;
+        chrome.bookmarks.create(
+          { title: title, url: url, parentId: parentId },
+          (bookmark) => {
+            if (chrome.runtime.lastError) {
+              reject(chrome.runtime.lastError);
+            } else {
+              resolve(bookmark);
+            }
+          }
+        );
+      }
+    });
+  });
+}
