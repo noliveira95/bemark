@@ -25,7 +25,13 @@ function AddBookmarkForm() {
 
   useEffect(() => {
     async function fetchFolderOptions() {
-      const folderOptions = await getFolderOptions();
+      const folderData = await getFolderOptions();
+      const folderOptions = folderData.map((folder) => {
+        return {
+          label: folder.label,
+          value: folder.value,
+        };
+      });
       setFolders(folderOptions);
     }
 
