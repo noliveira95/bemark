@@ -83,9 +83,10 @@ export async function getFolderOptions() {
   }
 }
 
-export function createFolder(title) {
+export function createFolder(title, location) {
   return new Promise((resolve, reject) => {
-    chrome.bookmarks.create({ title: title }, (folder) => {
+    const parentId = location || null;
+    chrome.bookmarks.create({ title: title, parentId: parentId }, (folder) => {
       if (chrome.runtime.lastError) {
         reject(chrome.runtime.lastError);
       } else {
