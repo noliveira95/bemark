@@ -4,39 +4,25 @@ import Checkbox from './Checkbox';
 import InputField from './InputField';
 import Button from './Button';
 import Dropdown from './Dropdown';
-import { getFolderOptions } from '../utils/utils';
 import { createBookmark } from '../api/bookmarks';
 import { CurrentTabContext } from '../Popup';
+import useGetFolderOptions from '../hooks/useGetFolderOptions';
 
 function AddBookmarkForm() {
   const { currentTab } = useContext(CurrentTabContext);
   const [selectedFolder, setSelectedFolder] = useState('');
-  const [folders, setFolders] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
   const [title, setTitle] = useState(currentTab.title);
   const [url, setUrl] = useState(currentTab.url);
 
   const dropdownRef = useRef();
 
+  const folders = useGetFolderOptions();
+
   useEffect(() => {
     setTitle(currentTab.title);
     setUrl(currentTab.url);
   }, [currentTab]);
-
-  useEffect(() => {
-    async function fetchFolderOptions() {
-      const folderData = await getFolderOptions();
-      const folderOptions = folderData.map((folder) => {
-        return {
-          label: folder.label,
-          value: folder.value,
-        };
-      });
-      setFolders(folderOptions);
-    }
-
-    fetchFolderOptions();
-  }, []);
 
   function handleTitleChange(e) {
     setTitle(e.target.value);
