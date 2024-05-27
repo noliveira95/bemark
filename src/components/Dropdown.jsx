@@ -6,7 +6,7 @@ import { BsFolderPlus } from 'react-icons/bs';
 import { ScreenContext } from '../Popup';
 
 const Dropdown = forwardRef((props, ref) => {
-  const { label, options, value, onChange } = props;
+  const { label, options, value, onChange, isAddingBookmark = true } = props;
   const screen = useContext(ScreenContext);
   return (
     <div className={styles['dropdown-container']}>
@@ -26,10 +26,12 @@ const Dropdown = forwardRef((props, ref) => {
             ))}
           </select>
         </div>
-        <IconButton
-          icon={<BsFolderPlus className={styles['add-folder-icon']} />}
-          onClick={() => screen.setScreen('addFolder')}
-        />
+        {isAddingBookmark && (
+          <IconButton
+            icon={<BsFolderPlus className={styles['add-folder-icon']} />}
+            onClick={() => screen.setScreen('addFolder')}
+          />
+        )}
       </div>
     </div>
   );
@@ -47,6 +49,7 @@ Dropdown.propTypes = {
   ).isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  isAddingBookmark: PropTypes.bool,
 };
 
 export default Dropdown;

@@ -32,6 +32,7 @@ function AddFolderForm() {
         options={folders}
         value={location}
         onChange={handleLocationChange}
+        isAddingBookmark={false}
       />
       <Button label="Add Folder" onClick={() => createFolder(folderTitle)} />
     </form>
