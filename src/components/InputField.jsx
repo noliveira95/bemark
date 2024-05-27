@@ -1,7 +1,7 @@
 import styles from './styles/InputField.module.css';
 import PropTypes from 'prop-types';
 
-function InputField({ label, type, value, onChange }) {
+function InputField({ label, type = 'text', value, onChange }) {
   return (
     <div className={styles['input-field-container']}>
       <label className={styles['input-label']}>{label}</label>
@@ -17,7 +17,7 @@ function InputField({ label, type, value, onChange }) {
 
 InputField.propTypes = {
   label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
