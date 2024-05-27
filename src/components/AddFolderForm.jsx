@@ -3,22 +3,37 @@ import { useState } from 'react';
 import InputField from './InputField';
 import Button from './Button';
 import { createFolder } from '../utils/utils';
+import useGetFolderOptions from '../hooks/useGetFolderOptions';
+import Dropdown from './Dropdown';
 
 function AddFolderForm() {
-  const [folderName, setFolderName] = useState('');
+  const [folderTitle, setFolderTitle] = useState('');
+  const [location, setLocation] = useState('');
+
+  const folders = useGetFolderOptions();
 
   const handleFolderNameChange = (e) => {
-    setFolderName(e.target.value);
+    setFolderTitle(e.target.value);
+  };
+
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
   };
 
   return (
     <form className={styles['add-folder-form']}>
       <InputField
-        label="Folder Name"
+        label="Name"
         onChange={handleFolderNameChange}
-        value={folderName}
+        value={folderTitle}
       />
-      <Button label="Add Folder" onClick={() => createFolder(folderName)} />
+      <Dropdown
+        label="Location"
+        options={folders}
+        value={location}
+        onChange={handleLocationChange}
+      />
+      <Button label="Add Folder" onClick={() => createFolder(folderTitle)} />
     </form>
   );
 }
