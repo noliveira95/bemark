@@ -1,5 +1,5 @@
 import styles from './styles/AddFolderForm.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import InputField from './InputField';
 import Button from './Button';
 import { createFolder } from '../utils/utils';
@@ -12,13 +12,24 @@ function AddFolderForm() {
 
   const folders = useGetFolderOptions();
 
+  useEffect(() => {
+    if (folders.length > 0) {
+      setLocation(folders[0].value);
+    }
+  }, [folders]);
+
   const handleFolderNameChange = (e) => {
     setFolderTitle(e.target.value);
   };
 
   const handleLocationChange = (e) => {
-    setLocation(e.target.value);
+    const selection = e.target.value;
+    if (location !== selection) {
+      setLocation(selection);
+    }
   };
+
+  console.log(location);
 
   return (
     <form className={styles['add-folder-form']}>
@@ -34,7 +45,10 @@ function AddFolderForm() {
         onChange={handleLocationChange}
         isAddingBookmark={false}
       />
-      <Button label="Add Folder" onClick={() => createFolder(folderTitle)} />
+      <Button
+        label="Add Folder"
+        onClick={() => createFolder(folderTitle, location)}
+      />
     </form>
   );
 }

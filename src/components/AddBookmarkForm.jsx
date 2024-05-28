@@ -20,6 +20,12 @@ function AddBookmarkForm() {
   const folders = useGetFolderOptions();
 
   useEffect(() => {
+    if (folders.length > 0) {
+      setSelectedFolder(folders[0].value);
+    }
+  }, [folders]);
+
+  useEffect(() => {
     setTitle(currentTab.title);
     setUrl(currentTab.url);
   }, [currentTab]);
@@ -43,7 +49,10 @@ function AddBookmarkForm() {
   }
 
   function handleFolderChange(e) {
-    setSelectedFolder(e.target.value);
+    const selection = e.target.value;
+    if (selection !== selectedFolder) {
+      setSelectedFolder(selection);
+    }
   }
 
   return (
