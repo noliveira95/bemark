@@ -29,8 +29,6 @@ function AddFolderForm() {
     }
   };
 
-  console.log(location);
-
   return (
     <form className={styles['add-folder-form']}>
       <InputField
@@ -43,7 +41,6 @@ function AddFolderForm() {
         options={folders}
         value={location}
         onChange={handleLocationChange}
-        isAddingBookmark={false}
       />
       <Button
         label="Add Folder"
