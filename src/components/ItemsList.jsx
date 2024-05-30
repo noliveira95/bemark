@@ -1,5 +1,5 @@
 import '../Popup.css';
-import { getAllItems } from '../utils/utils';
+import { getAllItems } from '../api/bookmarks';
 import PropTypes from 'prop-types';
 
 function ItemsList({ allItems }) {

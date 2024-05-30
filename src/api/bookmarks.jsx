@@ -1,6 +1,99 @@
 import Bookmark from '../components/Bookmark';
+import Folder from '../components/Folder';
 
-// Check if the "Bemark Favorites" folder exists
+export function getBookmarkTree() {
+  return new Promise((resolve, reject) => {
+    chrome.bookmarks.getTree((tree) => {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError);
+      } else {
+        resolve(tree[0].children);
+      }
+    });
+  });
+}
+
+export function getAllItems(nodes = []) {
+  try {
+    return nodes.map((node) => {
+      if (node.url) {
+        return <Bookmark key={node.id} url={node.url} title={node.title} />;
+      } else {
+        return (
+          <Folder
+            key={node.id}
+            title={node.title}
+            items={node.children ?? []}
+          />
+        );
+      }
+    });
+  } catch (error) {
+    console.error('Error retrieving all items:', error);
+    return [];
+  }
+}
+
+export function getBookmarks(nodes) {
+  try {
+    return nodes.map((node) => {
+      if (node.url) {
+        return <Bookmark key={node.id} url={node.url} title={node.title} />;
+      }
+      return;
+    });
+  } catch (error) {
+    console.error('Error retrieving bookmarks:', error);
+    return [];
+  }
+}
+
+export function createBookmark(title, url, selectedFolder, isChecked) {
+  if (isChecked) {
+    return createFavorite(title, url);
+  }
+  return new Promise((resolve, reject) => {
+    const parentId = selectedFolder || null;
+    chrome.bookmarks.create(
+      { title: title, url: url, parentId: parentId },
+      (bookmark) => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve(bookmark);
+        }
+      }
+    );
+  });
+}
+
+export function getFolders(nodes) {
+  try {
+    return nodes.map((node) => {
+      if (node.url) {
+        return;
+      }
+      return <Folder key={node.id} title={node.title} items={node.children} />;
+    });
+  } catch (error) {
+    console.error('Error retrieving folders:', error);
+    return [];
+  }
+}
+
+export function createFolder(title, location) {
+  return new Promise((resolve, reject) => {
+    const parentId = location || null;
+    chrome.bookmarks.create({ title: title, parentId: parentId }, (folder) => {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError);
+      } else {
+        resolve(folder);
+      }
+    });
+  });
+}
+
 function checkFavoritesFolder() {
   return new Promise((resolve) => {
     chrome.bookmarks.getTree((nodes) => {
@@ -15,7 +108,6 @@ function checkFavoritesFolder() {
   });
 }
 
-// Create the "Bemark Favorites" folder
 function createFavoritesFolder() {
   return new Promise((resolve) => {
     chrome.bookmarks.getTree((nodes) => {
@@ -36,7 +128,6 @@ function createFavoritesFolder() {
   });
 }
 
-// Check if the "Bemark Favorites" folder exists, and if not, create it
 export async function setupFavoritesFolder() {
   const favoritesFolder = await checkFavoritesFolder();
   if (!favoritesFolder) {
@@ -44,7 +135,6 @@ export async function setupFavoritesFolder() {
   }
 }
 
-// Retrieve the bookmarks in the "Bemark Favorites" folder
 export async function getFavorites(nodes) {
   try {
     await setupFavoritesFolder();

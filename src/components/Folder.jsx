@@ -1,6 +1,6 @@
 import styles from './styles/Folder.module.css';
 import { useState } from 'react';
-import { getAllItems } from '../utils/utils';
+import { getAllItems } from '../api/bookmarks';
 import PropTypes from 'prop-types';
 import { BsFolderFill } from 'react-icons/bs';
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getFolderOptions } from '../utils/utils';
+import { getFolderOptions } from '../utils/getFolderOptions';
 
 export default function useGetFolderOptions() {
   const [folders, setFolders] = useState([]);

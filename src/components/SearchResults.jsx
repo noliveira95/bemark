@@ -1,5 +1,5 @@
 import styles from './styles/Search.module.css';
-import { getBookmarks } from '../utils/utils';
+import { getBookmarks } from '../api/bookmarks';
 import { PropTypes } from 'prop-types';
 import { BsX } from 'react-icons/bs';
 

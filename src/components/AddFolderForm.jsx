@@ -2,7 +2,7 @@ import styles from './styles/AddFolderForm.module.css';
 import { useState, useEffect } from 'react';
 import InputField from './InputField';
 import Button from './Button';
-import { createFolder } from '../utils/utils';
+import { createFolder } from '../api/bookmarks';
 import useGetFolderOptions from '../hooks/useGetFolderOptions';
 import Dropdown from './Dropdown';
 
