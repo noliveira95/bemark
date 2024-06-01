@@ -3,17 +3,27 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BsFileEarmark, BsStar, BsTrash } from 'react-icons/bs';
 import EditDialog from './EditDialog';
-import { updateBookmark } from '../api/bookmarks';
+import { deleteBookmark, updateBookmark } from '../api/bookmarks';
 
 function Bookmark({ id, url, title, isFavorite = false }) {
   const [currentTitle, setCurrentTitle] = useState(title);
   const [currentUrl, setCurrentUrl] = useState(url);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const handleUpdate = (newTitle, newUrl) => {
     updateBookmark(id, newTitle, newUrl);
     setCurrentTitle(newTitle);
     setCurrentUrl(newUrl);
   };
+
+  const handleDelete = () => {
+    deleteBookmark(id);
+    setIsDeleted(true);
+  };
+
+  if (isDeleted) {
+    return null;
+  }
 
   return (
     <li className={styles.bookmark}>
@@ -37,7 +47,7 @@ function Bookmark({ id, url, title, isFavorite = false }) {
           url={currentUrl}
           onUpdate={handleUpdate}
         />
-        <button className={styles['action-button']}>
+        <button className={styles['action-button']} onClick={handleDelete}>
           <BsTrash />
         </button>
       </div>
