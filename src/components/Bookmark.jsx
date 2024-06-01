@@ -1,6 +1,8 @@
 import styles from './styles/Bookmark.module.css';
 import PropTypes from 'prop-types';
-import { BsFileEarmark, BsStar, BsPencil, BsTrash } from 'react-icons/bs';
+import { BsFileEarmark, BsStar, BsTrash } from 'react-icons/bs';
+import EditDialog from './EditDialog';
+
 function Bookmark({ url, title, isFavorite = false }) {
   return (
     <li className={styles.bookmark}>
@@ -18,9 +20,7 @@ function Bookmark({ url, title, isFavorite = false }) {
         {title}
       </a>
       <div className={styles['bookmark-actions']}>
-        <button className={styles['action-button']}>
-          <BsPencil />
-        </button>
+        <EditDialog buttonStyle={styles['action-button']} />
         <button className={styles['action-button']}>
           <BsTrash />
         </button>
