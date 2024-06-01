@@ -17,11 +17,19 @@ export function getAllItems(nodes = []) {
   try {
     return nodes.map((node) => {
       if (node.url) {
-        return <Bookmark key={node.id} url={node.url} title={node.title} />;
+        return (
+          <Bookmark
+            key={node.id}
+            id={node.id}
+            url={node.url}
+            title={node.title}
+          />
+        );
       } else {
         return (
           <Folder
             key={node.id}
+            id={node.id}
             title={node.title}
             items={node.children ?? []}
           />
@@ -38,7 +46,14 @@ export function getBookmarks(nodes) {
   try {
     return nodes.map((node) => {
       if (node.url) {
-        return <Bookmark key={node.id} url={node.url} title={node.title} />;
+        return (
+          <Bookmark
+            key={node.id}
+            id={node.id}
+            url={node.url}
+            title={node.title}
+          />
+        );
       }
       return;
     });
@@ -97,7 +112,14 @@ export function getFolders(nodes) {
       if (node.url) {
         return;
       }
-      return <Folder key={node.id} title={node.title} items={node.children} />;
+      return (
+        <Folder
+          key={node.id}
+          id={node.id}
+          title={node.title}
+          items={node.children}
+        />
+      );
     });
   } catch (error) {
     console.error('Error retrieving folders:', error);
@@ -176,7 +198,13 @@ export async function getFavorites(nodes) {
 
     return (
       bookmarks?.map((f) => (
-        <Bookmark key={f.id} url={f.url} title={f.title} isFavorite={true} />
+        <Bookmark
+          key={f.id}
+          id={f.id}
+          url={f.url}
+          title={f.title}
+          isFavorite={true}
+        />
       )) ?? []
     );
   } catch (error) {
