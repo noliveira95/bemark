@@ -67,6 +67,30 @@ export function createBookmark(title, url, selectedFolder, isChecked) {
   });
 }
 
+export function deleteBookmark(id) {
+  return new Promise((resolve, reject) => {
+    chrome.bookmarks.remove(id, () => {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError);
+      } else {
+        resolve();
+      }
+    });
+  });
+}
+
+export function updateBookmark(id, title, url) {
+  return new Promise((resolve, reject) => {
+    chrome.bookmarks.update(id, { title: title, url: url }, (bookmark) => {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError);
+      } else {
+        resolve(bookmark);
+      }
+    });
+  });
+}
+
 export function getFolders(nodes) {
   try {
     return nodes.map((node) => {
