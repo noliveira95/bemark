@@ -2,11 +2,12 @@ import styles from './styles/EditDialog.module.css';
 import PropTypes from 'prop-types';
 import * as Dialog from '@radix-ui/react-dialog';
 import { BsX, BsPencil } from 'react-icons/bs';
+// import { updateBookmark } from '../api/bookmarks';
 
-const EditDialog = ({ buttonStyle }) => (
+const EditDialog = ({ editButtonStyle, title, url }) => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
-      <button className={buttonStyle}>
+      <button className={editButtonStyle}>
         <BsPencil />
       </button>
     </Dialog.Trigger>
@@ -21,27 +22,23 @@ const EditDialog = ({ buttonStyle }) => (
           <label className={styles.Label} htmlFor="name">
             Name
           </label>
-          <input
-            className={styles.Input}
-            id="name"
-            defaultValue="Pedro Duarte"
-          />
+          <input className={styles.Input} id="name" defaultValue={title} />
         </fieldset>
         <fieldset className={styles.Fieldset}>
           <label className={styles.Label} htmlFor="username">
             Username
           </label>
-          <input
-            className={styles.Input}
-            id="username"
-            defaultValue="@peduarte"
-          />
+          <input className={styles.Input} id="username" defaultValue={url} />
         </fieldset>
         <div
           style={{ display: 'flex', marginTop: 25, justifyContent: 'flex-end' }}
         >
           <Dialog.Close asChild>
-            <button className={`${styles.Button} ${styles.green}`}>
+            {/* TODO: Set up save logic */}
+            <button
+              className={`${styles.Button} ${styles.green}`}
+              onClick={() => console.log('Saving...')}
+            >
               Save changes
             </button>
           </Dialog.Close>
@@ -57,7 +54,9 @@ const EditDialog = ({ buttonStyle }) => (
 );
 
 EditDialog.propTypes = {
-  buttonStyle: PropTypes.string.isRequired,
+  editButtonStyle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default EditDialog;

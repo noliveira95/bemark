@@ -20,7 +20,11 @@ function Bookmark({ url, title, isFavorite = false }) {
         {title}
       </a>
       <div className={styles['bookmark-actions']}>
-        <EditDialog buttonStyle={styles['action-button']} />
+        <EditDialog
+          editButtonStyle={styles['action-button']}
+          title={title}
+          url={url}
+        />
         <button className={styles['action-button']}>
           <BsTrash />
         </button>
