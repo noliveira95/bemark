@@ -23,14 +23,11 @@ function EditDialog({ editButtonStyle, title, url, onUpdate }) {
         <Dialog.Overlay className={styles.DialogOverlay} />
         <Dialog.Content className={styles.DialogContent}>
           <Dialog.Title className={styles.DialogTitle}>
-            Edit profile
+            Edit Bookmark
           </Dialog.Title>
-          <Dialog.Description className={styles.DialogDescription}>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </Dialog.Description>
           <fieldset className={styles.Fieldset}>
-            <label className={styles.Label} htmlFor="name">
-              Name
+            <label className={styles.Label} htmlFor="title">
+              Title
             </label>
             <input
               className={styles.Input}
@@ -40,8 +37,8 @@ function EditDialog({ editButtonStyle, title, url, onUpdate }) {
             />
           </fieldset>
           <fieldset className={styles.Fieldset}>
-            <label className={styles.Label} htmlFor="username">
-              Username
+            <label className={styles.Label} htmlFor="url">
+              URL
             </label>
             <input
               className={styles.Input}
@@ -53,7 +50,6 @@ function EditDialog({ editButtonStyle, title, url, onUpdate }) {
           <div
             style={{
               display: 'flex',
-              marginTop: 25,
               justifyContent: 'flex-end',
             }}
           >
