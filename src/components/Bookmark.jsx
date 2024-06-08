@@ -3,23 +3,42 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BsFileEarmark, BsStar, BsTrash } from 'react-icons/bs';
 import EditDialog from './EditDialog';
-import { deleteBookmark, updateBookmark } from '../api/bookmarks';
+import {
+  deleteBookmark,
+  updateBookmark,
+  checkIsFavorite,
+  removeFavorite,
+} from '../api/bookmarks';
 
-function Bookmark({ id, url, title, isFavorite = false }) {
+function Bookmark({ id, url, title, favorite = false }) {
   const [currentTitle, setCurrentTitle] = useState(title);
   const [currentUrl, setCurrentUrl] = useState(url);
   const [isDeleted, setIsDeleted] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(favorite);
 
-  const handleUpdate = (newTitle, newUrl) => {
+  // TODO: Fix removeFavorite function
+  const handleUpdate = async (newTitle, newUrl, isFavorite) => {
     updateBookmark(id, newTitle, newUrl);
     setCurrentTitle(newTitle);
     setCurrentUrl(newUrl);
+    setIsFavorite(isFavorite);
+    if (!isFavorite) {
+      try {
+        await removeFavorite(id);
+      } catch (e) {
+        console.error('Error removing favorite:', e);
+      }
+    }
   };
 
   const handleDelete = () => {
     deleteBookmark(id);
     setIsDeleted(true);
   };
+
+  checkIsFavorite(id).then((isFav) => {
+    setIsFavorite(isFav);
+  });
 
   if (isDeleted) {
     return null;
@@ -45,6 +64,7 @@ function Bookmark({ id, url, title, isFavorite = false }) {
           editButtonStyle={styles['action-button']}
           title={currentTitle}
           url={currentUrl}
+          favorite={isFavorite}
           onUpdate={handleUpdate}
         />
         <button className={styles['action-button']} onClick={handleDelete}>
@@ -59,7 +79,7 @@ Bookmark.propTypes = {
   id: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  isFavorite: PropTypes.bool,
+  favorite: PropTypes.bool,
 };
 
 export default Bookmark;

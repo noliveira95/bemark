@@ -4,12 +4,20 @@ import PropTypes from 'prop-types';
 import * as Dialog from '@radix-ui/react-dialog';
 import { BsX, BsPencil } from 'react-icons/bs';
 
-function EditDialog({ editButtonStyle, title, url, onUpdate }) {
+function EditDialog({
+  editButtonStyle,
+  title,
+  url,
+  favorite,
+  onUpdate,
+  isEditingFolder = false,
+}) {
   const [currentTitle, setCurrentTitle] = useState(title);
   const [currentUrl, setCurrentUrl] = useState(url);
+  const [isFavorite, setIsFavorite] = useState(favorite);
 
   const handleSave = () => {
-    onUpdate(currentTitle, currentUrl);
+    onUpdate(currentTitle, currentUrl, isFavorite);
   };
 
   return (
@@ -23,7 +31,7 @@ function EditDialog({ editButtonStyle, title, url, onUpdate }) {
         <Dialog.Overlay className={styles.DialogOverlay} />
         <Dialog.Content className={styles.DialogContent}>
           <Dialog.Title className={styles.DialogTitle}>
-            Edit Bookmark
+            {isEditingFolder ? 'Edit Folder' : 'Edit Bookmark'}
           </Dialog.Title>
           <fieldset className={styles.Fieldset}>
             <label className={styles.Label} htmlFor="title">
@@ -36,17 +44,33 @@ function EditDialog({ editButtonStyle, title, url, onUpdate }) {
               onChange={(e) => setCurrentTitle(e.target.value)}
             />
           </fieldset>
-          <fieldset className={styles.Fieldset}>
-            <label className={styles.Label} htmlFor="url">
-              URL
-            </label>
-            <input
-              className={styles.Input}
-              id="username"
-              value={currentUrl}
-              onChange={(e) => setCurrentUrl(e.target.value)}
-            />
-          </fieldset>
+          {!isEditingFolder && (
+            <fieldset className={styles.Fieldset}>
+              <label className={styles.Label} htmlFor="url">
+                URL
+              </label>
+              <input
+                className={styles.Input}
+                id="username"
+                value={currentUrl}
+                onChange={(e) => setCurrentUrl(e.target.value)}
+              />
+            </fieldset>
+          )}
+          {!isEditingFolder && (
+            <fieldset className={styles.Fieldset}>
+              <label className={styles.Label} htmlFor="favorite">
+                Favorite
+              </label>
+              <input
+                type="checkbox"
+                id="favorite"
+                style={{ appearance: 'auto' }}
+                checked={isFavorite}
+                onChange={(e) => setIsFavorite(e.target.checked)}
+              />
+            </fieldset>
+          )}
           <div
             style={{
               display: 'flex',
@@ -77,7 +101,9 @@ EditDialog.propTypes = {
   editButtonStyle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  favorite: PropTypes.bool,
   onUpdate: PropTypes.func.isRequired,
+  isEditingFolder: PropTypes.bool,
 };
 
 export default EditDialog;

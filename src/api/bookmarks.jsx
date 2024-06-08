@@ -203,7 +203,7 @@ export async function getFavorites(nodes) {
           id={f.id}
           url={f.url}
           title={f.title}
-          isFavorite={true}
+          favorite={true}
         />
       )) ?? []
     );
@@ -233,6 +233,59 @@ export function createFavorite(title, url) {
           }
         );
       }
+    });
+  });
+}
+
+export async function removeFavorite(id) {
+  try {
+    const bookmarkTree = await getBookmarkTree();
+    const otherBookmarksFolder = findOtherBookmarksFolder(bookmarkTree);
+
+    if (!otherBookmarksFolder) {
+      throw new Error('Other Bookmarks folder not found');
+    }
+
+    const movedBookmark = await new Promise((resolve, reject) => {
+      chrome.bookmarks.move(
+        id,
+        { parentId: otherBookmarksFolder.id },
+        (result) => {
+          if (chrome.runtime.lastError) {
+            reject(chrome.runtime.lastError);
+          } else {
+            resolve(result);
+          }
+        }
+      );
+    });
+
+    return movedBookmark;
+  } catch (error) {
+    console.error('Error moving bookmark:', error);
+    throw error;
+  }
+}
+
+function findOtherBookmarksFolder(nodes) {
+  for (let node of nodes) {
+    if (node.title === 'Other Bookmarks') {
+      return node;
+    }
+    if (node.children) {
+      const found = findOtherBookmarksFolder(node.children);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+export function checkIsFavorite(id) {
+  return new Promise((resolve) => {
+    chrome.bookmarks.get(id, (bookmark) => {
+      chrome.bookmarks.get(bookmark.parentId, (parentBookmark) => {
+        resolve(parentBookmark.title === 'Bemark Favorites');
+      });
     });
   });
 }
