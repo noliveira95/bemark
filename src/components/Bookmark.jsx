@@ -6,7 +6,6 @@ import EditDialog from './EditDialog';
 import {
   deleteBookmark,
   updateBookmark,
-  checkIsFavorite,
   removeFavorite,
 } from '../api/bookmarks';
 
@@ -35,10 +34,6 @@ function Bookmark({ id, url, title, favorite = false }) {
     deleteBookmark(id);
     setIsDeleted(true);
   };
-
-  checkIsFavorite(id).then((isFav) => {
-    setIsFavorite(isFav);
-  });
 
   if (isDeleted) {
     return null;
