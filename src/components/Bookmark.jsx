@@ -15,7 +15,6 @@ function Bookmark({ id, url, title, favorite = false }) {
   const [isDeleted, setIsDeleted] = useState(false);
   const [isFavorite, setIsFavorite] = useState(favorite);
 
-  // TODO: Fix removeFavorite function
   const handleUpdate = async (newTitle, newUrl, isFavorite) => {
     updateBookmark(id, newTitle, newUrl);
     setCurrentTitle(newTitle);
