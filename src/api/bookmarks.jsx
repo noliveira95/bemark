@@ -267,6 +267,42 @@ export async function removeFavorite(id) {
   }
 }
 
+export async function addFavorite(id) {
+  try {
+    const bookmarkTree = await getBookmarkTree();
+    const favoritesFolder = findFavoritesFolder(bookmarkTree);
+
+    if (!favoritesFolder) {
+      throw new Error('Favorites folder not found');
+    }
+
+    const movedBookmark = await new Promise((resolve, reject) => {
+      chrome.bookmarks.move(id, { parentId: favoritesFolder.id }, (result) => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+
+    return movedBookmark;
+  } catch (error) {
+    console.error('Error moving bookmark:', error);
+    throw error;
+  }
+}
+
+export function checkIsFavorite(id) {
+  return new Promise((resolve) => {
+    chrome.bookmarks.get(id, (bookmark) => {
+      chrome.bookmarks.get(bookmark.parentId, (parentBookmark) => {
+        resolve(parentBookmark.title === 'Bemark Favorites');
+      });
+    });
+  });
+}
+
 function findOtherBookmarksFolder(nodes) {
   for (let node of nodes) {
     if (node.title === 'Other Bookmarks') {
@@ -280,12 +316,15 @@ function findOtherBookmarksFolder(nodes) {
   return null;
 }
 
-export function checkIsFavorite(id) {
-  return new Promise((resolve) => {
-    chrome.bookmarks.get(id, (bookmark) => {
-      chrome.bookmarks.get(bookmark.parentId, (parentBookmark) => {
-        resolve(parentBookmark.title === 'Bemark Favorites');
-      });
-    });
-  });
+export function findFavoritesFolder(nodes) {
+  for (let node of nodes) {
+    if (node.title === 'Bemark Favorites') {
+      return node;
+    }
+    if (node.children) {
+      const found = findFavoritesFolder(node.children);
+      if (found) return found;
+    }
+  }
+  return null;
 }

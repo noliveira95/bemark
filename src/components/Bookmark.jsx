@@ -6,6 +6,7 @@ import EditDialog from './EditDialog';
 import {
   deleteBookmark,
   updateBookmark,
+  addFavorite,
   removeFavorite,
 } from '../api/bookmarks';
 
@@ -25,6 +26,12 @@ function Bookmark({ id, url, title, favorite = false }) {
         await removeFavorite(id);
       } catch (e) {
         console.error('Error removing favorite:', e);
+      }
+    } else {
+      try {
+        await addFavorite(id);
+      } catch (e) {
+        console.error('Error adding favorite:', e);
       }
     }
   };
