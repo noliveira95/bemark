@@ -5,11 +5,12 @@ import InputField from './InputField';
 import Button from './Button';
 import Dropdown from './Dropdown';
 import { createBookmark } from '../api/bookmarks';
-import { CurrentTabContext } from '../Popup';
+import { CurrentTabContext, ScreenContext } from '../Popup';
 import useGetFolderOptions from '../hooks/useGetFolderOptions';
 
 function AddBookmarkForm() {
   const { currentTab } = useContext(CurrentTabContext);
+  const { setScreen } = useContext(ScreenContext);
   const [selectedFolder, setSelectedFolder] = useState('');
   const [isChecked, setIsChecked] = useState(false);
   const [title, setTitle] = useState(currentTab.title);
@@ -83,9 +84,10 @@ function AddBookmarkForm() {
       />
       <Button
         label={'Add Bookmark'}
-        onClick={(e) => {
+        onClick={async (e) => {
           e.preventDefault();
-          createBookmark(title, url, selectedFolder, isChecked);
+          await createBookmark(title, url, selectedFolder, isChecked);
+          setScreen('home');
         }}
       />
     </form>
