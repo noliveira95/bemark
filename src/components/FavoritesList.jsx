@@ -1,7 +1,18 @@
 import '../Popup.css';
+import { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
+import { getFavorites } from '../api/bookmarks';
 
-function FavoritesList({ favorites }) {
+function FavoritesList({ items }) {
+  const [favorites, setFavorites] = useState([]);
+
+  // Separate effect to update favorites when allItems changes
+  useEffect(() => {
+    if (items.length > 0) {
+      getFavorites(items).then(setFavorites).catch(console.error);
+    }
+  }, [items]);
+
   return (
     <div className="favorites-list">
       <h1>Favorites</h1>
@@ -15,7 +26,7 @@ function FavoritesList({ favorites }) {
 }
 
 FavoritesList.propTypes = {
-  favorites: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 export default FavoritesList;
