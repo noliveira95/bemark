@@ -27,12 +27,12 @@ function Folder({ id, title, items }) {
   }
 
   return (
-    <li
-      className={styles.folder}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className={styles['folder-row']}>
+    <li className={styles.folder}>
+      <div
+        className={styles['folder-row']}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <button
           className={styles['folder-button']}
           onClick={() => setIsOpen(!isOpen)}
