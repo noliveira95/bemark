@@ -15,6 +15,7 @@ function Bookmark({ id, url, title, favorite = false }) {
   const [currentUrl, setCurrentUrl] = useState(url);
   const [isDeleted, setIsDeleted] = useState(false);
   const [isFavorite, setIsFavorite] = useState(favorite);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleUpdate = async (newTitle, newUrl, isFavorite) => {
     updateBookmark(id, newTitle, newUrl);
@@ -46,7 +47,11 @@ function Bookmark({ id, url, title, favorite = false }) {
   }
 
   return (
-    <li className={styles.bookmark}>
+    <li
+      className={styles.bookmark}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {isFavorite ? (
         <BsStar className={styles['bookmark-icon']} />
       ) : (
@@ -66,6 +71,7 @@ function Bookmark({ id, url, title, favorite = false }) {
         isFavorite={isFavorite}
         handleUpdate={handleUpdate}
         handleDelete={handleDelete}
+        isVisible={isHovered}
       />
     </li>
   );

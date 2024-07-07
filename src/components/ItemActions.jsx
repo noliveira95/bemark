@@ -1,13 +1,23 @@
-import styles from './styles/Bookmark.module.css';
+import styles from './styles/ItemActions.module.css';
 import PropTypes from 'prop-types';
 import EditDialog from './EditDialog';
 import { BsTrash } from 'react-icons/bs';
 
 function ItemActions(props) {
-  const { currentTitle, currentUrl, isFavorite, handleUpdate, handleDelete } =
-    props;
+  const {
+    currentTitle,
+    currentUrl,
+    isFavorite,
+    handleUpdate,
+    handleDelete,
+    isVisible,
+  } = props;
   return (
-    <div className={styles['bookmark-actions']}>
+    <div
+      className={`${styles['bookmark-actions']} ${
+        isVisible ? styles.visible : ''
+      }`}
+    >
       <EditDialog
         editButtonStyle={styles['action-button']}
         title={currentTitle}
@@ -28,6 +38,7 @@ ItemActions.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
   handleUpdate: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
+  isVisible: PropTypes.bool,
 };
 
 export default ItemActions;
