@@ -11,6 +11,7 @@ function ItemActions(props) {
     handleUpdate,
     handleDelete,
     isVisible,
+    isFolder = false,
   } = props;
   return (
     <div
@@ -24,6 +25,7 @@ function ItemActions(props) {
         url={currentUrl}
         favorite={isFavorite}
         onUpdate={handleUpdate}
+        isEditingFolder={isFolder}
       />
       <button className={styles['action-button']} onClick={handleDelete}>
         <BsTrash />
@@ -34,11 +36,12 @@ function ItemActions(props) {
 
 ItemActions.propTypes = {
   currentTitle: PropTypes.string.isRequired,
-  currentUrl: PropTypes.string.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
+  currentUrl: PropTypes.string,
+  isFavorite: PropTypes.bool,
   handleUpdate: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
   isVisible: PropTypes.bool,
+  isFolder: PropTypes.bool,
 };
 
 export default ItemActions;

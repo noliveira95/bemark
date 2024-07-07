@@ -3,20 +3,51 @@ import { useState } from 'react';
 import { getAllItems } from '../api/bookmarks';
 import PropTypes from 'prop-types';
 import { BsFolderFill } from 'react-icons/bs';
+import ItemActions from './ItemActions';
+import { deleteBookmark, updateBookmark } from '../api/bookmarks';
 
-function Folder({ title, items }) {
+function Folder({ id, title, items }) {
+  const [currentTitle, setCurrentTitle] = useState(title);
+  const [isDeleted, setIsDeleted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleUpdate = async (newTitle) => {
+    updateBookmark(id, newTitle);
+    setCurrentTitle(newTitle);
+  };
+
+  const handleDelete = () => {
+    deleteBookmark(id);
+    setIsDeleted(true);
+  };
+
+  if (isDeleted) {
+    return null;
+  }
+
   return (
-    <li className={styles.folder}>
-      <button
-        className={styles['folder-button']}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <div className={styles['folder-icon']}>
-          <BsFolderFill />
-        </div>
-        {title}
-      </button>
+    <li
+      className={styles.folder}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className={styles['folder-row']}>
+        <button
+          className={styles['folder-button']}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <BsFolderFill className={styles['folder-icon']} />
+          {currentTitle}
+        </button>
+        <ItemActions
+          currentTitle={currentTitle}
+          handleUpdate={handleUpdate}
+          handleDelete={handleDelete}
+          isVisible={isHovered}
+          isFolder={true}
+        />
+      </div>
       <ul
         className={`${styles['folder-items']} ${
           isOpen ? 'display-block' : 'display-none'
@@ -29,6 +60,7 @@ function Folder({ title, items }) {
 }
 
 Folder.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
 };
