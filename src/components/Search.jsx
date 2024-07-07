@@ -4,6 +4,7 @@ import SearchResults from './SearchResults';
 import SearchField from './SearchField';
 import { BsMic, BsStop } from 'react-icons/bs';
 import useVoiceToText from '../hooks/useVoiceToText';
+import IconButton from './IconButton';
 
 function Search() {
   const [showResults, setShowResults] = useState(false);
@@ -63,13 +64,15 @@ function Search() {
           transcript={transcript}
         />
         {isListening ? (
-          <button onClick={handleMicClick}>
-            <BsStop className={styles['mic-icon']} />
-          </button>
+          <IconButton
+            icon={<BsStop className={styles['mic-icon']} />}
+            onClick={handleMicClick}
+          />
         ) : (
-          <button onClick={handleMicClick}>
-            <BsMic className={styles['mic-icon']} />
-          </button>
+          <IconButton
+            icon={<BsMic className={styles['mic-icon']} />}
+            onClick={handleMicClick}
+          />
         )}
       </div>
     </div>
