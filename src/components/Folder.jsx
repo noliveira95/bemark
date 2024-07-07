@@ -12,6 +12,12 @@ function Folder({ id, title, items }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
+  const isRootFolder =
+    title === 'Bookmarks Bar' ||
+    title === 'Other Bookmarks' ||
+    title === 'Mobile Bookmarks' ||
+    title === 'Bemark Favorites';
+
   const handleUpdate = async (newTitle) => {
     updateBookmark(id, newTitle);
     setCurrentTitle(newTitle);
@@ -44,11 +50,7 @@ function Folder({ id, title, items }) {
           currentTitle={currentTitle}
           handleUpdate={handleUpdate}
           handleDelete={handleDelete}
-          isVisible={
-            title === 'Bookmarks Bar' || title === 'Other Bookmarks'
-              ? false
-              : isHovered
-          }
+          isVisible={isRootFolder ? false : isHovered}
           isFolder={true}
         />
       </div>
