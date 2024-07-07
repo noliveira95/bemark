@@ -1,20 +1,21 @@
 import styles from './styles/Bookmark.module.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { BsFileEarmark, BsStar, BsTrash } from 'react-icons/bs';
-import EditDialog from './EditDialog';
+import { BsFileEarmark, BsStar } from 'react-icons/bs';
 import {
   deleteBookmark,
   updateBookmark,
   addFavorite,
   removeFavorite,
 } from '../api/bookmarks';
+import ItemActions from './ItemActions';
 
 function Bookmark({ id, url, title, favorite = false }) {
   const [currentTitle, setCurrentTitle] = useState(title);
   const [currentUrl, setCurrentUrl] = useState(url);
   const [isDeleted, setIsDeleted] = useState(false);
   const [isFavorite, setIsFavorite] = useState(favorite);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleUpdate = async (newTitle, newUrl, isFavorite) => {
     updateBookmark(id, newTitle, newUrl);
@@ -46,7 +47,11 @@ function Bookmark({ id, url, title, favorite = false }) {
   }
 
   return (
-    <li className={styles.bookmark}>
+    <li
+      className={styles.bookmark}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {isFavorite ? (
         <BsStar className={styles['bookmark-icon']} />
       ) : (
@@ -60,18 +65,14 @@ function Bookmark({ id, url, title, favorite = false }) {
       >
         {currentTitle}
       </a>
-      <div className={styles['bookmark-actions']}>
-        <EditDialog
-          editButtonStyle={styles['action-button']}
-          title={currentTitle}
-          url={currentUrl}
-          favorite={isFavorite}
-          onUpdate={handleUpdate}
-        />
-        <button className={styles['action-button']} onClick={handleDelete}>
-          <BsTrash />
-        </button>
-      </div>
+      <ItemActions
+        currentTitle={currentTitle}
+        currentUrl={currentUrl}
+        isFavorite={isFavorite}
+        handleUpdate={handleUpdate}
+        handleDelete={handleDelete}
+        isVisible={isHovered}
+      />
     </li>
   );
 }

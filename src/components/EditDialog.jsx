@@ -100,7 +100,7 @@ function EditDialog({
 EditDialog.propTypes = {
   editButtonStyle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   favorite: PropTypes.bool,
   onUpdate: PropTypes.func.isRequired,
   isEditingFolder: PropTypes.bool,
