@@ -1,5 +1,6 @@
 import { BsFileEarmarkPlus, BsFolderPlus, BsFilter } from 'react-icons/bs';
 import PropTypes from 'prop-types';
+import IconButton from './IconButton';
 
 function Navbar({ setScreen }) {
   return (
@@ -8,15 +9,18 @@ function Navbar({ setScreen }) {
         Filler
       </div>
       <div className="nav-icon-container">
-        <button onClick={() => setScreen('filters')} className="nav-icon">
-          <BsFilter />
-        </button>
-        <button onClick={() => setScreen('addFolder')} className="nav-icon">
-          <BsFolderPlus />
-        </button>
-        <button onClick={() => setScreen('addBookmark')} className="nav-icon">
-          <BsFileEarmarkPlus />
-        </button>
+        <IconButton
+          icon={<BsFilter className="nav-icon" />}
+          onClick={() => setScreen('filters')}
+        />
+        <IconButton
+          icon={<BsFolderPlus className="nav-icon" />}
+          onClick={() => setScreen('addFolder')}
+        />
+        <IconButton
+          icon={<BsFileEarmarkPlus className="nav-icon" />}
+          onClick={() => setScreen('addBookmark')}
+        />
       </div>
     </div>
   );
