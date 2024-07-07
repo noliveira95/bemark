@@ -42,10 +42,12 @@ function AddFolderForm() {
         value={location}
         onChange={handleLocationChange}
       />
-      <Button
-        label="Add Folder"
-        onClick={() => createFolder(folderTitle, location)}
-      />
+      <div className={styles['button-container']}>
+        <Button
+          label="Add Folder"
+          onClick={() => createFolder(folderTitle, location)}
+        />
+      </div>
     </form>
   );
 }

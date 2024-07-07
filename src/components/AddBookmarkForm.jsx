@@ -82,14 +82,16 @@ function AddBookmarkForm() {
         onChange={handleFolderChange}
         ref={dropdownRef}
       />
-      <Button
-        label={'Add Bookmark'}
-        onClick={async (e) => {
-          e.preventDefault();
-          await createBookmark(title, url, selectedFolder, isChecked);
-          setScreen('home');
-        }}
-      />
+      <div className={styles['button-container']}>
+        <Button
+          label={'Add Bookmark'}
+          onClick={async (e) => {
+            e.preventDefault();
+            await createBookmark(title, url, selectedFolder, isChecked);
+            setScreen('home');
+          }}
+        />
+      </div>
     </form>
   );
 }
