@@ -1,14 +1,14 @@
 import styles from './styles/Bookmark.module.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { BsFileEarmark, BsStar, BsTrash } from 'react-icons/bs';
-import EditDialog from './EditDialog';
+import { BsFileEarmark, BsStar } from 'react-icons/bs';
 import {
   deleteBookmark,
   updateBookmark,
   addFavorite,
   removeFavorite,
 } from '../api/bookmarks';
+import ItemActions from './ItemActions';
 
 function Bookmark({ id, url, title, favorite = false }) {
   const [currentTitle, setCurrentTitle] = useState(title);
@@ -60,18 +60,13 @@ function Bookmark({ id, url, title, favorite = false }) {
       >
         {currentTitle}
       </a>
-      <div className={styles['bookmark-actions']}>
-        <EditDialog
-          editButtonStyle={styles['action-button']}
-          title={currentTitle}
-          url={currentUrl}
-          favorite={isFavorite}
-          onUpdate={handleUpdate}
-        />
-        <button className={styles['action-button']} onClick={handleDelete}>
-          <BsTrash />
-        </button>
-      </div>
+      <ItemActions
+        currentTitle={currentTitle}
+        currentUrl={currentUrl}
+        isFavorite={isFavorite}
+        handleUpdate={handleUpdate}
+        handleDelete={handleDelete}
+      />
     </li>
   );
 }
