@@ -1,4 +1,4 @@
-import { BsFileEarmarkPlus, BsFolderPlus, BsFilter } from 'react-icons/bs';
+import { BsFileEarmarkPlus, BsFolderPlus } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 import IconButton from './IconButton';
 
@@ -9,10 +9,11 @@ function Navbar({ setScreen }) {
         Filler
       </div>
       <div className="nav-icon-container">
-        <IconButton
+        {/* TODO: Set up filters */}
+        {/* <IconButton
           icon={<BsFilter className="nav-icon" />}
           onClick={() => setScreen('filters')}
-        />
+        /> */}
         <IconButton
           icon={<BsFolderPlus className="nav-icon" />}
           onClick={() => setScreen('addFolder')}
