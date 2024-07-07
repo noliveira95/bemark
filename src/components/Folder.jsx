@@ -44,7 +44,11 @@ function Folder({ id, title, items }) {
           currentTitle={currentTitle}
           handleUpdate={handleUpdate}
           handleDelete={handleDelete}
-          isVisible={isHovered}
+          isVisible={
+            title === 'Bookmarks Bar' || title === 'Other Bookmarks'
+              ? false
+              : isHovered
+          }
           isFolder={true}
         />
       </div>

@@ -4,11 +4,13 @@
   align-items: center;
   gap: 1rem;
   opacity: 0;
-  transition: opacity 0.25s;
+  pointer-events: none;
+  transition: all 0.25s ease-out;
 }
 
 .visible {
   opacity: 1;
+  pointer-events: all;
 }
 
 .action-button {
@@ -20,10 +22,10 @@
   background-color: transparent;
   border: none;
   font-size: 1rem;
-  color: lightgray;
+  color: var(--color-gray-500);
   transition: color 0.25s;
 }
 
 .action-button:hover {
-  color: black;
+  color: var(--color-black);
 }
