@@ -5,8 +5,8 @@ import IconButton from './IconButton';
 function Navbar({ setScreen }) {
   return (
     <nav id="navbar" className="navbar">
-      <div className="logo" onClick={() => setScreen('home')}>
-        Filler
+      <div className="logo-container" onClick={() => setScreen('home')}>
+        <h1 className="logo">bemark</h1>
       </div>
       <div className="nav-icon-container">
         {/* TODO: Set up filters */}
