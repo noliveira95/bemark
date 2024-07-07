@@ -4,7 +4,7 @@ import IconButton from './IconButton';
 
 function Navbar({ setScreen }) {
   return (
-    <navbar id="navbar" className="navbar">
+    <nav id="navbar" className="navbar">
       <div className="logo" onClick={() => setScreen('home')}>
         Filler
       </div>
@@ -23,7 +23,7 @@ function Navbar({ setScreen }) {
           onClick={() => setScreen('addBookmark')}
         />
       </div>
-    </navbar>
+    </nav>
   );
 }
 
