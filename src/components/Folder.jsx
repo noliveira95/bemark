@@ -13,6 +13,7 @@ function Folder({ id, title, items }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const isRootFolder =
+    title === 'Bookmarks' ||
     title === 'Bookmarks Bar' ||
     title === 'Other Bookmarks' ||
     title === 'Mobile Bookmarks' ||
