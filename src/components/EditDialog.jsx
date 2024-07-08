@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as Dialog from '@radix-ui/react-dialog';
 import { BsX, BsPencil } from 'react-icons/bs';
+import Button from './Button';
 
 function EditDialog({
   editButtonStyle,
@@ -78,12 +79,7 @@ function EditDialog({
             }}
           >
             <Dialog.Close asChild>
-              <button
-                className={`${styles.Button} ${styles.green}`}
-                onClick={handleSave}
-              >
-                Save changes
-              </button>
+              <Button label={'Save Changes'} onClick={handleSave} />
             </Dialog.Close>
           </div>
           <Dialog.Close asChild>
