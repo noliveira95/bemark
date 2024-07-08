@@ -1,4 +1,4 @@
-import styles from './styles/ItemActions.module.css';
+import styles from './styles/ListItem.module.css';
 import PropTypes from 'prop-types';
 import EditDialog from './EditDialog';
 import { BsTrash } from 'react-icons/bs';
@@ -10,15 +10,14 @@ function ItemActions(props) {
     isFavorite,
     handleUpdate,
     handleDelete,
-    isVisible,
+    isVisible = true,
     isFolder = false,
   } = props;
+
+  if (!isVisible) return null;
+
   return (
-    <div
-      className={`${styles['bookmark-actions']} ${
-        isVisible ? styles.visible : ''
-      }`}
-    >
+    <div className={styles['bookmark-actions']}>
       <EditDialog
         editButtonStyle={styles['action-button']}
         title={currentTitle}

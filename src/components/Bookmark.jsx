@@ -1,4 +1,4 @@
-import styles from './styles/Bookmark.module.css';
+import styles from './styles/ListItem.module.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BsFileEarmark, BsStar } from 'react-icons/bs';
@@ -15,7 +15,6 @@ function Bookmark({ id, url, title, favorite = false }) {
   const [currentUrl, setCurrentUrl] = useState(url);
   const [isDeleted, setIsDeleted] = useState(false);
   const [isFavorite, setIsFavorite] = useState(favorite);
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleUpdate = async (newTitle, newUrl, isFavorite) => {
     updateBookmark(id, newTitle, newUrl);
@@ -47,11 +46,7 @@ function Bookmark({ id, url, title, favorite = false }) {
   }
 
   return (
-    <li
-      className={styles.bookmark}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <li className={styles.bookmark}>
       {isFavorite ? (
         <BsStar className={styles['bookmark-icon']} />
       ) : (
@@ -71,7 +66,6 @@ function Bookmark({ id, url, title, favorite = false }) {
         isFavorite={isFavorite}
         handleUpdate={handleUpdate}
         handleDelete={handleDelete}
-        isVisible={isHovered}
       />
     </li>
   );

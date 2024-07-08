@@ -1,4 +1,4 @@
-import styles from './styles/Folder.module.css';
+import styles from './styles/ListItem.module.css';
 import { useState } from 'react';
 import { getAllItems } from '../api/bookmarks';
 import PropTypes from 'prop-types';
@@ -10,7 +10,6 @@ function Folder({ id, title, items }) {
   const [currentTitle, setCurrentTitle] = useState(title);
   const [isDeleted, setIsDeleted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   const isRootFolder =
     title === 'Bookmarks' ||
@@ -35,11 +34,7 @@ function Folder({ id, title, items }) {
 
   return (
     <li className={styles.folder}>
-      <div
-        className={styles['folder-row']}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+      <div className={styles['folder-row']}>
         <button
           className={styles['folder-button']}
           onClick={() => setIsOpen(!isOpen)}
@@ -51,7 +46,7 @@ function Folder({ id, title, items }) {
           currentTitle={currentTitle}
           handleUpdate={handleUpdate}
           handleDelete={handleDelete}
-          isVisible={isRootFolder ? false : isHovered}
+          isVisible={isRootFolder ? false : true}
           isFolder={true}
         />
       </div>
