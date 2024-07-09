@@ -89,5 +89,9 @@
   top: 0;
   right: 0;
   margin: 20px;
-  font-size: 1.25rem;
+  font-size: 24px;
+  border-radius: 100%;
+}
+.close-icon:hover {
+  background-color: var(--color-gray-500);
 }
