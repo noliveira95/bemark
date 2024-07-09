@@ -43,11 +43,17 @@
   padding: 0.5rem;
   padding-right: 30px;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  font-family: inherit;
+  box-shadow: var(--input-box-shadow);
+  border: none;
+  border-radius: var(--input-border-radius);
   width: 100%;
-  -webkit-appearance: none;
   appearance: none;
+  -webkit-appearance: none;
+}
+.dropdown-select:focus,
+.dropdown-select:active {
+  box-shadow: var(--input-box-shadow-focus);
 }
 
 .add-folder-icon {

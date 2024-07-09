@@ -12,6 +12,10 @@
 .input-field {
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: var(--input-border-radius);
+  box-shadow: var(--input-box-shadow);
+}
+.input-field:focus,
+.input-field:active {
+  box-shadow: var(--input-box-shadow-focus);
 }
