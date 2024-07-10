@@ -1,17 +1,11 @@
 import '../Popup.css';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { PropTypes } from 'prop-types';
-import { getFavorites } from '../api/bookmarks';
+import { BookmarksContext } from '../Popup';
+// import { getFavorites } from '../api/bookmarks';
 
-function FavoritesList({ items }) {
-  const [favorites, setFavorites] = useState([]);
-
-  // Separate effect to update favorites when allItems changes
-  useEffect(() => {
-    if (items.length > 0) {
-      getFavorites(items).then(setFavorites).catch(console.error);
-    }
-  }, [items]);
+function FavoritesList() {
+  const { favorites } = useContext(BookmarksContext);
 
   return (
     <div className="favorites-list">

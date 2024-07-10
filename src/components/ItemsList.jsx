@@ -1,8 +1,10 @@
+import { useContext } from 'react';
 import '../Popup.css';
 import { getAllItems } from '../api/bookmarks';
-import PropTypes from 'prop-types';
+import { BookmarksContext } from '../Popup';
 
-function ItemsList({ allItems }) {
+function ItemsList() {
+  const { allItems } = useContext(BookmarksContext);
   return (
     <div className="items-list-container">
       <div className="items-list-title">
@@ -22,10 +24,5 @@ function ItemsList({ allItems }) {
     </div>
   );
 }
-
-ItemsList.propTypes = {
-  allItems: PropTypes.array.isRequired,
-  scrollY: PropTypes.number,
-};
 
 export default ItemsList;

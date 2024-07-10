@@ -88,3 +88,14 @@
   width: 100%;
   margin-bottom: 16px;
 }
+
+/* LOADING SCREEN */
+.loading-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+}

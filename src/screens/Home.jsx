@@ -1,33 +1,17 @@
 import '../Popup.css';
-import { useEffect, useState } from 'react';
 import FavoritesList from '../components/FavoritesList';
 import ItemsList from '../components/ItemsList';
-import { getBookmarkTree } from '../api/bookmarks';
 import PropTypes from 'prop-types';
+import { BookmarksContext } from '../Popup';
+import { useContext } from 'react';
 
 function Home({ scrollY }) {
-  const [allItems, setAllItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Effect to load all items only once on component mount
-  useEffect(() => {
-    setIsLoading(true);
-    getBookmarkTree()
-      .then((items) => {
-        setAllItems(items);
-        setIsLoading(false);
-      })
-      .catch(console.error);
-  }, []);
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+  const { allItems } = useContext(BookmarksContext);
 
   return (
     <div className="screen">
       <FavoritesList items={allItems} />
-      <ItemsList allItems={allItems} scrollY={scrollY} />
+      <ItemsList scrollY={scrollY} />
     </div>
   );
 }
