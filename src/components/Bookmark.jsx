@@ -24,21 +24,25 @@ function Bookmark({ id, url, title, favorite = false }) {
     if (!isFavorite) {
       try {
         await removeFavorite(id);
-      } catch (e) {
-        console.error('Error removing favorite:', e);
+      } catch (error) {
+        console.error('Error removing favorite:', error);
       }
     } else {
       try {
         await addFavorite(id);
-      } catch (e) {
-        console.error('Error adding favorite:', e);
+      } catch (error) {
+        console.error('Error adding favorite:', error);
       }
     }
   };
 
-  const handleDelete = () => {
-    deleteBookmark(id);
-    setIsDeleted(true);
+  const handleDelete = async () => {
+    try {
+      await deleteBookmark(id);
+      setIsDeleted(true);
+    } catch (error) {
+      console.error('Error deleting bookmark:', error);
+    }
   };
 
   if (isDeleted) {

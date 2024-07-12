@@ -56,6 +56,16 @@ function AddBookmarkForm() {
     }
   }
 
+  const handleAddBookmark = async (e) => {
+    e.preventDefault();
+    try {
+      await createBookmark(title, url, selectedFolder, isChecked);
+      setScreen('home');
+    } catch (error) {
+      console.log('Failed to add bookmark:', error);
+    }
+  };
+
   return (
     <form className={styles['add-bookmark-form']}>
       <InputField
@@ -83,14 +93,7 @@ function AddBookmarkForm() {
         ref={dropdownRef}
       />
       <div className={styles['button-container']}>
-        <Button
-          label={'Add Bookmark'}
-          onClick={async (e) => {
-            e.preventDefault();
-            await createBookmark(title, url, selectedFolder, isChecked);
-            setScreen('home');
-          }}
-        />
+        <Button label={'Add Bookmark'} onClick={handleAddBookmark} />
       </div>
     </form>
   );

@@ -41,7 +41,7 @@ function Popup() {
         // Do not set isLoading to false here, let the other useEffect handle it
       })
       .catch(console.error);
-  }, []);
+  }, [currentScreen]);
 
   useEffect(() => {
     if (!isLoading) {
