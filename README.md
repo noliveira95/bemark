@@ -1,6 +1,6 @@
 # Bemark
 
-A better bookmark manager.
+A user-friendly Chrome extension for managing bookmarks.
 
 ## Getting Started
 
