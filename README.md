@@ -2,9 +2,12 @@
 
 A user-friendly Chrome extension for managing bookmarks.
 
-## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+https://github.com/user-attachments/assets/2bf7c3b8-6591-45d1-88a2-9961845ea57d
+
+<br>
+
+## Local Setup
 
 ### Prerequisites
 
